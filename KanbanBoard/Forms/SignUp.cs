@@ -90,7 +90,7 @@ namespace KanbanBoard.Forms
 
         private void button1_Click(object sender, EventArgs e)
         {
-            this.Dispose();
+            this.Close();
         }
 
         private Bitmap CreateImage(int Width, int Height)

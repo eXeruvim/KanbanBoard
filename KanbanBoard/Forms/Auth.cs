@@ -27,9 +27,7 @@ namespace KanbanBoard.Forms
         private void logup_btn_Click(object sender, EventArgs e)
         {
             SignUp logUpForm = new SignUp();
-            this.Hide();
             logUpForm.ShowDialog();
-            this.Close();
         }
         private void login_btn_Click(object sender, EventArgs e)
         {
@@ -55,6 +53,10 @@ namespace KanbanBoard.Forms
                             usernamepass = login_textbox.Text;
                             // Вызов нового окна
                             // Закрытие / Скрытие  этого окна
+                        }
+                        else
+                        {
+                            MessageBox.Show("Неправильный пароль");
                         }
                     }
                     else
