@@ -106,6 +106,8 @@ namespace KanbanBoard.Forms
             this.pictureBoxEye.Size = new System.Drawing.Size(28, 24);
             this.pictureBoxEye.TabIndex = 6;
             this.pictureBoxEye.TabStop = false;
+            this.pictureBoxEye.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBoxEye_MouseDown);
+            this.pictureBoxEye.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pictureBoxEye_MouseUp);
             // 
             // Auth
             // 
@@ -124,6 +126,7 @@ namespace KanbanBoard.Forms
             this.Name = "Auth";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Auth";
+            this.Load += new System.EventHandler(this.Auth_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxEye)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

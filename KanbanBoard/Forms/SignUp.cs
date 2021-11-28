@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
-using FireSharp;
 using FireSharp.Config;
 using FireSharp.Interfaces;
 using FireSharp.Response;
@@ -10,12 +9,6 @@ namespace KanbanBoard.Forms
 {
     public partial class SignUp : Form
     {
-        private String text;
-        public SignUp()
-        {
-            InitializeComponent();
-        }
-
         public bool connectionState = false;
         IFirebaseConfig firebaseConfig = new FirebaseConfig()
         {
@@ -46,7 +39,13 @@ namespace KanbanBoard.Forms
                     Data result = response.ResultAs<Data>();
 
                     connectionState = true;
-                    MessageBox.Show("Data Inserted " + result.login);
+                    MessageBox.Show("Регистрация прошла успешно, " + result.login);
+                    name_textBox.Text = string.Empty;
+                    login_textBox.Text = string.Empty;
+                    email_textBox.Text = string.Empty;
+                    pass_textBox.Text = string.Empty;
+                    pictureBox1.Image = this.CreateImage(pictureBox1.Width, pictureBox1.Height);
+                    captcha_textBox.Text = string.Empty;
                 }
                 catch
                 {
@@ -55,12 +54,18 @@ namespace KanbanBoard.Forms
                 }
         }
 
+        // ---------------
+        private String text;
+        public SignUp()
+        {
+            InitializeComponent();
+        }
+
         private void acceptBtn(object sender, EventArgs e)
         {
-            if (name_textBox.Text.Length != 0 && login_textBox.Text.Length != 0 && email_textBox.Text.Length != 0 && pass_textBox.Text.Length != 0)
+            if (!string.IsNullOrEmpty(name_textBox.Text) && !string.IsNullOrEmpty(login_textBox.Text) && !string.IsNullOrEmpty(email_textBox.Text) && !string.IsNullOrEmpty(pass_textBox.Text))
                 if (captcha_textBox.Text == this.text)
                 {
-                    MessageBox.Show("Регистрация прошла успешно!");
                     String login = login_textBox.Text;
                     var data = new Data
                     {
@@ -70,7 +75,9 @@ namespace KanbanBoard.Forms
                         password = pass_textBox.Text,
                     };
                     sendData(data, login);
-                    reloadAll();
+                    Auth auth = new Auth();
+                    auth.Show();
+                    this.Close();
                 }
                 else
                 {
@@ -181,23 +188,10 @@ namespace KanbanBoard.Forms
             captcha_textBox.Text = "";
         }
 
-        public void reloadAll()
-        {
-            name_textBox.Text = "";
-            login_textBox.Text = "";
-            email_textBox.Text = "";
-            pass_textBox.Text = "";
-            pictureBox1.Image = this.CreateImage(pictureBox1.Width, pictureBox1.Height);
-            captcha_textBox.Text = "";
-        }
-
         private void LogUp_Load(object sender, EventArgs e)
         {
             pictureBox1.Image = this.CreateImage(pictureBox1.Width, pictureBox1.Height);
         }
-
-
-
     }
 
     internal class Data
