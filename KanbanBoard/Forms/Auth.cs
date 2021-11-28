@@ -57,6 +57,10 @@ namespace KanbanBoard.Forms
                             // Закрытие / Скрытие  этого окна
                         }
                     }
+                    else
+                    {
+                        MessageBox.Show("Пользователь " + login_textbox.Text + " не обнаружен :(");
+                    }
                 }
             }
         }
