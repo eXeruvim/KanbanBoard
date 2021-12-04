@@ -24,9 +24,11 @@ namespace KanbanBoard.Forms
         {
             InitializeComponent();
         }
+
         private void logup_btn_Click(object sender, EventArgs e)
         {
             SignUp logUpForm = new SignUp();
+            this.Hide();
             logUpForm.ShowDialog();
         }
         private void login_btn_Click(object sender, EventArgs e)
@@ -37,35 +39,25 @@ namespace KanbanBoard.Forms
             }
             else
             {
-                FirebaseResponse response = client.Get("Users/");
-                Dictionary<string, Data> result = response.ResultAs<Dictionary<string, Data>>();
+                FirebaseResponse response = client.Get("Users/" + login_textbox.Text);
+                Data res_data = response.ResultAs<Data>();
 
-                foreach(var get in result)
+                Data cur_data = new Data()
                 {
-                    string userResult = get.Value.login;
-                    string passResult = get.Value.password;
+                    login = login_textbox.Text,
+                    password = password_textbox.Text
+                };
 
-                    if (login_textbox.Text == userResult)
-                    {
-                        if (password_textbox.Text == passResult)
-                        {
-                            MessageBox.Show("Добро пожаловать, " + login_textbox.Text + ". Снова. ");
-                            usernamepass = login_textbox.Text;
-                            // Вызов нового окна
-                            // Закрытие / Скрытие  этого окна
-                        }
-                        else
-                        {
-                            MessageBox.Show("Неправильный пароль");
-                        }
-                    }
-                    else
-                    {
-                        MessageBox.Show("Пользователь " + login_textbox.Text + " не обнаружен :(");
-                    }
+                if (Data.isEquals(res_data, cur_data))
+                {
+                    MainForm main = new MainForm();
+                    this.Hide();
+                    main.ShowDialog();
                 }
+                else { Data.ShowError(); }
             }
         }
+
         public void pictureBoxEye_MouseDown(object sender, MouseEventArgs e)
         {
             pictureBoxEye.Image = Properties.Resources.eyeTrue;
@@ -76,14 +68,6 @@ namespace KanbanBoard.Forms
             password_textbox.UseSystemPasswordChar = true;
             pictureBoxEye.Image = Properties.Resources.eyeFalse;
         }
-        public void auth_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.Control && e.KeyCode == Keys.Enter)
-            {
-                MessageBox.Show("Добро пожаловать, хуила");
-            }
-        }
-
         private void Auth_Load(object sender, EventArgs e)
         {
             try

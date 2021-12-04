@@ -46,11 +46,14 @@ namespace KanbanBoard.Forms
                     pass_textBox.Text = string.Empty;
                     pictureBox1.Image = this.CreateImage(pictureBox1.Width, pictureBox1.Height);
                     captcha_textBox.Text = string.Empty;
+                    Form auth = Application.OpenForms[0];
+                    auth.Show();
+                    this.Close();
                 }
                 catch
                 {
                     connectionState = false;
-                    MessageBox.Show("Server not available! ");
+                    MessageBox.Show("Не удалось соединиться с сервером");
                 }
         }
 
@@ -75,9 +78,6 @@ namespace KanbanBoard.Forms
                         password = pass_textBox.Text,
                     };
                     sendData(data, login);
-                    Auth auth = new Auth();
-                    auth.Show();
-                    this.Close();
                 }
                 else
                 {
@@ -86,11 +86,6 @@ namespace KanbanBoard.Forms
                 }
             else
                 MessageBox.Show("Не все поля заполнены!");
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            this.Close();
         }
 
         private Bitmap CreateImage(int Width, int Height)
@@ -192,16 +187,19 @@ namespace KanbanBoard.Forms
         {
             pictureBox1.Image = this.CreateImage(pictureBox1.Width, pictureBox1.Height);
         }
+
+        private void cancel_btn_Click(object sender, EventArgs e)
+        {
+            Form auth = Application.OpenForms[0];
+            auth.Show();
+            this.Close();
+        }
+
+        private void SignUp_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Form auth = Application.OpenForms[0];
+            auth.Show();
+            this.Close();
+        }
     }
-
-    internal class Data
-    {
-        public string name { get; set; }
-        public string login { get; set; }
-        public string email { get; set; }
-        public string password { get; set; }
-    }
-
-
-
 }

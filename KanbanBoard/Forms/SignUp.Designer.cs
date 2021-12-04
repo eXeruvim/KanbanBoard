@@ -37,8 +37,8 @@ namespace KanbanBoard.Forms
             this.login_textBox = new System.Windows.Forms.TextBox();
             this.email_textBox = new System.Windows.Forms.TextBox();
             this.pass_textBox = new System.Windows.Forms.TextBox();
-            this.accept = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.accept_btn = new System.Windows.Forms.Button();
+            this.cancel_btn = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.captcha_textBox = new System.Windows.Forms.TextBox();
             this.button2 = new System.Windows.Forms.Button();
@@ -118,27 +118,27 @@ namespace KanbanBoard.Forms
             this.pass_textBox.TabIndex = 7;
             this.pass_textBox.UseSystemPasswordChar = true;
             // 
-            // accept
+            // accept_btn
             // 
-            this.accept.Font = new System.Drawing.Font("Lucida Sans Unicode", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.accept.Location = new System.Drawing.Point(143, 296);
-            this.accept.Name = "accept";
-            this.accept.Size = new System.Drawing.Size(75, 25);
-            this.accept.TabIndex = 8;
-            this.accept.Text = "Принять";
-            this.accept.UseVisualStyleBackColor = true;
-            this.accept.Click += new System.EventHandler(this.acceptBtn);
+            this.accept_btn.Font = new System.Drawing.Font("Lucida Sans Unicode", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.accept_btn.Location = new System.Drawing.Point(143, 296);
+            this.accept_btn.Name = "accept_btn";
+            this.accept_btn.Size = new System.Drawing.Size(75, 25);
+            this.accept_btn.TabIndex = 8;
+            this.accept_btn.Text = "Принять";
+            this.accept_btn.UseVisualStyleBackColor = true;
+            this.accept_btn.Click += new System.EventHandler(this.acceptBtn);
             // 
-            // button1
+            // cancel_btn
             // 
-            this.button1.Font = new System.Drawing.Font("Lucida Sans Unicode", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button1.Location = new System.Drawing.Point(290, 296);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 25);
-            this.button1.TabIndex = 9;
-            this.button1.Text = "Отмена";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.cancel_btn.Font = new System.Drawing.Font("Lucida Sans Unicode", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.cancel_btn.Location = new System.Drawing.Point(290, 296);
+            this.cancel_btn.Name = "cancel_btn";
+            this.cancel_btn.Size = new System.Drawing.Size(75, 25);
+            this.cancel_btn.TabIndex = 9;
+            this.cancel_btn.Text = "Отмена";
+            this.cancel_btn.UseVisualStyleBackColor = true;
+            this.cancel_btn.Click += new System.EventHandler(this.cancel_btn_Click);
             // 
             // pictureBox1
             // 
@@ -165,7 +165,7 @@ namespace KanbanBoard.Forms
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.reloadCaptcha);
             // 
-            // LogUp
+            // SignUp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -174,8 +174,8 @@ namespace KanbanBoard.Forms
             this.Controls.Add(this.button2);
             this.Controls.Add(this.captcha_textBox);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.accept);
+            this.Controls.Add(this.cancel_btn);
+            this.Controls.Add(this.accept_btn);
             this.Controls.Add(this.pass_textBox);
             this.Controls.Add(this.email_textBox);
             this.Controls.Add(this.login_textBox);
@@ -186,9 +186,10 @@ namespace KanbanBoard.Forms
             this.Controls.Add(this.login);
             this.Font = new System.Drawing.Font("Lucida Sans Unicode", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Name = "LogUp";
+            this.Name = "SignUp";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Регистрация";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.SignUp_FormClosed);
             this.Load += new System.EventHandler(this.LogUp_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
@@ -206,8 +207,8 @@ namespace KanbanBoard.Forms
         private System.Windows.Forms.TextBox login_textBox;
         private System.Windows.Forms.TextBox email_textBox;
         private System.Windows.Forms.TextBox pass_textBox;
-        private System.Windows.Forms.Button accept;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button accept_btn;
+        private System.Windows.Forms.Button cancel_btn;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.TextBox captcha_textBox;
         private System.Windows.Forms.Button button2;

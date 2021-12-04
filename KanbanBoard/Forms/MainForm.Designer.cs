@@ -30,151 +30,176 @@ namespace KanbanBoard.Forms
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
+            this.projects_iconButton = new FontAwesome.Sharp.IconButton();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.user_iconButton = new FontAwesome.Sharp.IconButton();
+            this.bars_iconBtn = new FontAwesome.Sharp.IconButton();
+            this.upper_panel = new System.Windows.Forms.Panel();
+            this.restore_iconButton = new FontAwesome.Sharp.IconButton();
+            this.minimize_iconButton = new FontAwesome.Sharp.IconButton();
+            this.exit_iconButton = new FontAwesome.Sharp.IconButton();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
-            this.panel3.SuspendLayout();
+            this.panel4.SuspendLayout();
+            this.upper_panel.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.button3);
-            this.panel1.Controls.Add(this.button2);
-            this.panel1.Controls.Add(this.button1);
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(8)))), ((int)(((byte)(7)))));
+            this.panel1.Controls.Add(this.projects_iconButton);
+            this.panel1.Controls.Add(this.panel4);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(250, 450);
+            this.panel1.Size = new System.Drawing.Size(157, 497);
             this.panel1.TabIndex = 0;
             // 
-            // panel2
+            // projects_iconButton
             // 
-            this.panel2.Controls.Add(this.label3);
-            this.panel2.Controls.Add(this.label2);
-            this.panel2.Controls.Add(this.label1);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(250, 0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(550, 125);
-            this.panel2.TabIndex = 1;
+            this.projects_iconButton.FlatAppearance.BorderSize = 0;
+            this.projects_iconButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.projects_iconButton.IconChar = FontAwesome.Sharp.IconChar.Tasks;
+            this.projects_iconButton.IconColor = System.Drawing.Color.Yellow;
+            this.projects_iconButton.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.projects_iconButton.Location = new System.Drawing.Point(37, 94);
+            this.projects_iconButton.Name = "projects_iconButton";
+            this.projects_iconButton.Size = new System.Drawing.Size(87, 56);
+            this.projects_iconButton.TabIndex = 4;
+            this.projects_iconButton.UseVisualStyleBackColor = true;
+            // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.user_iconButton);
+            this.panel4.Controls.Add(this.bars_iconBtn);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel4.Location = new System.Drawing.Point(0, 0);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(157, 87);
+            this.panel4.TabIndex = 3;
+            // 
+            // user_iconButton
+            // 
+            this.user_iconButton.FlatAppearance.BorderSize = 0;
+            this.user_iconButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.user_iconButton.IconChar = FontAwesome.Sharp.IconChar.User;
+            this.user_iconButton.IconColor = System.Drawing.Color.Yellow;
+            this.user_iconButton.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.user_iconButton.IconSize = 60;
+            this.user_iconButton.Location = new System.Drawing.Point(12, 12);
+            this.user_iconButton.Name = "user_iconButton";
+            this.user_iconButton.Size = new System.Drawing.Size(83, 72);
+            this.user_iconButton.TabIndex = 2;
+            this.user_iconButton.UseVisualStyleBackColor = true;
+            // 
+            // bars_iconBtn
+            // 
+            this.bars_iconBtn.FlatAppearance.BorderSize = 0;
+            this.bars_iconBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bars_iconBtn.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.bars_iconBtn.IconChar = FontAwesome.Sharp.IconChar.Bars;
+            this.bars_iconBtn.IconColor = System.Drawing.Color.Yellow;
+            this.bars_iconBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.bars_iconBtn.IconSize = 32;
+            this.bars_iconBtn.Location = new System.Drawing.Point(101, 12);
+            this.bars_iconBtn.Name = "bars_iconBtn";
+            this.bars_iconBtn.Size = new System.Drawing.Size(50, 72);
+            this.bars_iconBtn.TabIndex = 1;
+            this.bars_iconBtn.UseVisualStyleBackColor = true;
+            // 
+            // upper_panel
+            // 
+            this.upper_panel.Controls.Add(this.restore_iconButton);
+            this.upper_panel.Controls.Add(this.minimize_iconButton);
+            this.upper_panel.Controls.Add(this.exit_iconButton);
+            this.upper_panel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.upper_panel.Location = new System.Drawing.Point(157, 0);
+            this.upper_panel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.upper_panel.Name = "upper_panel";
+            this.upper_panel.Size = new System.Drawing.Size(753, 94);
+            this.upper_panel.TabIndex = 1;
+            this.upper_panel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.upper_panel_MouseDown);
+            // 
+            // restore_iconButton
+            // 
+            this.restore_iconButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.restore_iconButton.BackColor = System.Drawing.Color.Blue;
+            this.restore_iconButton.FlatAppearance.BorderSize = 0;
+            this.restore_iconButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.restore_iconButton.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.restore_iconButton.IconChar = FontAwesome.Sharp.IconChar.WindowRestore;
+            this.restore_iconButton.IconColor = System.Drawing.Color.White;
+            this.restore_iconButton.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.restore_iconButton.IconSize = 20;
+            this.restore_iconButton.Location = new System.Drawing.Point(705, 0);
+            this.restore_iconButton.Name = "restore_iconButton";
+            this.restore_iconButton.Size = new System.Drawing.Size(25, 25);
+            this.restore_iconButton.TabIndex = 4;
+            this.restore_iconButton.UseVisualStyleBackColor = false;
+            this.restore_iconButton.Click += new System.EventHandler(this.restore_iconButton_Click);
+            // 
+            // minimize_iconButton
+            // 
+            this.minimize_iconButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.minimize_iconButton.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.minimize_iconButton.FlatAppearance.BorderSize = 0;
+            this.minimize_iconButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.minimize_iconButton.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.minimize_iconButton.IconChar = FontAwesome.Sharp.IconChar.WindowMinimize;
+            this.minimize_iconButton.IconColor = System.Drawing.Color.White;
+            this.minimize_iconButton.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.minimize_iconButton.IconSize = 20;
+            this.minimize_iconButton.Location = new System.Drawing.Point(678, 0);
+            this.minimize_iconButton.Name = "minimize_iconButton";
+            this.minimize_iconButton.Size = new System.Drawing.Size(25, 25);
+            this.minimize_iconButton.TabIndex = 3;
+            this.minimize_iconButton.UseVisualStyleBackColor = false;
+            this.minimize_iconButton.Click += new System.EventHandler(this.minimize_iconButton_Click);
+            // 
+            // exit_iconButton
+            // 
+            this.exit_iconButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.exit_iconButton.BackColor = System.Drawing.Color.Red;
+            this.exit_iconButton.FlatAppearance.BorderSize = 0;
+            this.exit_iconButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.exit_iconButton.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.exit_iconButton.IconChar = FontAwesome.Sharp.IconChar.WindowClose;
+            this.exit_iconButton.IconColor = System.Drawing.Color.White;
+            this.exit_iconButton.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.exit_iconButton.IconSize = 20;
+            this.exit_iconButton.Location = new System.Drawing.Point(728, 0);
+            this.exit_iconButton.Name = "exit_iconButton";
+            this.exit_iconButton.Size = new System.Drawing.Size(25, 25);
+            this.exit_iconButton.TabIndex = 2;
+            this.exit_iconButton.UseVisualStyleBackColor = false;
+            this.exit_iconButton.Click += new System.EventHandler(this.exit_iconButton_Click);
             // 
             // panel3
             // 
-            this.panel3.Controls.Add(this.label6);
-            this.panel3.Controls.Add(this.label5);
-            this.panel3.Controls.Add(this.label4);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(250, 125);
+            this.panel3.Location = new System.Drawing.Point(157, 94);
+            this.panel3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(550, 325);
+            this.panel3.Size = new System.Drawing.Size(753, 403);
             this.panel3.TabIndex = 2;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(51, 96);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(94, 29);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(51, 161);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(94, 29);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(51, 229);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(94, 29);
-            this.button3.TabIndex = 2;
-            this.button3.Text = "button3";
-            this.button3.UseVisualStyleBackColor = true;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(24, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(50, 20);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "label1";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(230, 9);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(50, 20);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "label2";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(457, 9);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(50, 20);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "label3";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(24, 36);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(50, 20);
-            this.label4.TabIndex = 0;
-            this.label4.Text = "label4";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(230, 36);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(50, 20);
-            this.label5.TabIndex = 1;
-            this.label5.Text = "label5";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(457, 36);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(50, 20);
-            this.label6.TabIndex = 2;
-            this.label6.Text = "label6";
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(910, 497);
             this.Controls.Add(this.panel3);
-            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.upper_panel);
             this.Controls.Add(this.panel1);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "MainForm";
             this.Text = "MainForm";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainForm_FormClosed);
+            this.Resize += new System.EventHandler(this.MainForm_Resize);
             this.panel1.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
+            this.panel4.ResumeLayout(false);
+            this.upper_panel.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -182,16 +207,14 @@ namespace KanbanBoard.Forms
         #endregion
 
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Panel upper_panel;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Panel panel4;
+        private FontAwesome.Sharp.IconButton projects_iconButton;
+        private FontAwesome.Sharp.IconButton user_iconButton;
+        private FontAwesome.Sharp.IconButton bars_iconBtn;
+        private FontAwesome.Sharp.IconButton restore_iconButton;
+        private FontAwesome.Sharp.IconButton minimize_iconButton;
+        private FontAwesome.Sharp.IconButton exit_iconButton;
     }
 }
