@@ -27,7 +27,6 @@ namespace KanbanBoard
             }
             if (data1.Login != data2.Login)
             {
-                error = "Пользователь " + data1.Login + " не найден.";
                 return false;
             }
             if (data1.Password != data2.Password)

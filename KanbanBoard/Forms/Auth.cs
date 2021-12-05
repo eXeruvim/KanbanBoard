@@ -37,6 +37,7 @@ namespace KanbanBoard.Forms
                string.IsNullOrWhiteSpace(password_textbox.Text))
             {
                 MessageBox.Show("Введите логин и пароль");
+                signin_btn.Enabled = true;
                 return;
             }
             #endregion

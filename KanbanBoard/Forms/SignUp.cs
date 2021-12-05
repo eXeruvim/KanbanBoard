@@ -35,7 +35,7 @@ namespace KanbanBoard.Forms
                 try
                 {
                     // Отправка на сервер
-                    FirebaseResponse response =  client.Push("Users/" + login, data);
+                    SetResponse response =  client.Set("Users/" + login, data);
                     Data result = response.ResultAs<Data>();
 
                     connectionState = true;
