@@ -35,7 +35,7 @@ namespace KanbanBoard.Forms
                 try
                 {
                     // Отправка на сервер
-                    SetResponse response = await client.SetTaskAsync("Users/" + login, data);
+                    SetResponse response = await client.SetAsync("Users/" + login, data);
                     Data result = response.ResultAs<Data>();
 
                     connectionState = true;

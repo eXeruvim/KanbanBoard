@@ -1,4 +1,5 @@
-﻿using FireSharp.Config;
+﻿using FireSharp;
+using FireSharp.Config;
 using FireSharp.Interfaces;
 using FireSharp.Response;
 using System;
@@ -12,13 +13,7 @@ namespace KanbanBoard.Forms
     {
         public static string usernamepass;
 
-        IFirebaseConfig config = new FirebaseConfig()
-        {
-            AuthSecret = "EalE4Ra04uGQuLuA0zEhemNqzL2q0kAxzhJxHZrt",
-            BasePath = "https://kanbanboard-c892f-default-rtdb.europe-west1.firebasedatabase.app/"
-        };
-
-        IFirebaseClient client;
+        public static IFirebaseClient client;
 
         public Auth()
         {
@@ -31,31 +26,34 @@ namespace KanbanBoard.Forms
             this.Hide();
             logUpForm.ShowDialog();
         }
-        private void login_btn_Click(object sender, EventArgs e)
+        private async void login_btn_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(login_textbox.Text) || string.IsNullOrEmpty(password_textbox.Text))
+            #region Condition
+            if (string.IsNullOrWhiteSpace(login_textbox.Text) &&
+               string.IsNullOrWhiteSpace(password_textbox.Text))
             {
-                MessageBox.Show("Не все поля заполнены");
+                MessageBox.Show("Введите логин и пароль");
+                return;
             }
-            else
+            #endregion
+
+            String login = login_textbox.Text;
+            FirebaseResponse response = await client.GetAsync(@"Users/" + login_textbox.Text);
+            Data res = response.ResultAs<Data>();
+            Data current_data = new Data()
             {
-                FirebaseResponse response = client.Get("Users/" + login_textbox.Text);
-                Data res_data = response.ResultAs<Data>();
+                login = login_textbox.Text,
+                password = password_textbox.Text
+            };
 
-                Data cur_data = new Data()
-                {
-                    login = login_textbox.Text,
-                    password = password_textbox.Text
-                };
-
-                if (Data.isEquals(res_data, cur_data))
-                {
-                    MainForm main = new MainForm();
-                    this.Hide();
-                    main.ShowDialog();
-                }
-                else { Data.ShowError(); }
+            if (Data.isEquals(res, current_data))
+            {
+                MainForm main = new MainForm();
+                this.Hide();
+                main.ShowDialog();
             }
+            else { Data.ShowError(); }
+            
         }
 
         public void pictureBoxEye_MouseDown(object sender, MouseEventArgs e)
@@ -72,16 +70,16 @@ namespace KanbanBoard.Forms
         {
             try
             {
-                client = new FireSharp.FirebaseClient(config);
-
-                if (client != null)
-                {
-                    // че-нибудь
-                }
+                client = new FirebaseClient(
+                    new FirebaseConfig
+                    {
+                        AuthSecret = "EalE4Ra04uGQuLuA0zEhemNqzL2q0kAxzhJxHZrt",
+                        BasePath = "https://kanbanboard-c892f-default-rtdb.europe-west1.firebasedatabase.app/"
+                    });
             }
             catch
             {
-                MessageBox.Show("Connection fail :(");
+                MessageBox.Show("Ошибка соединения");
             }
         }
     }
