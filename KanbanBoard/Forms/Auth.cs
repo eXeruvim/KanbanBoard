@@ -1,5 +1,4 @@
-﻿using FireSharp;
-using FireSharp.Config;
+﻿using FireSharp.Config;
 using FireSharp.Interfaces;
 using FireSharp.Response;
 using System;
@@ -11,9 +10,13 @@ namespace KanbanBoard.Forms
 {
     public partial class Auth : Form
     {
-        public static string usernamepass;
 
-        public static IFirebaseClient client;
+        IFirebaseConfig config = new FirebaseConfig
+        {
+            AuthSecret = "EalE4Ra04uGQuLuA0zEhemNqzL2q0kAxzhJxHZrt",
+            BasePath = "https://kanbanboard-c892f-default-rtdb.europe-west1.firebasedatabase.app/"
+        };
+        IFirebaseClient client;
 
         public Auth()
         {
@@ -28,6 +31,7 @@ namespace KanbanBoard.Forms
         }
         private async void login_btn_Click(object sender, EventArgs e)
         {
+            signin_btn.Enabled = false;
             #region Condition
             if (string.IsNullOrWhiteSpace(login_textbox.Text) &&
                string.IsNullOrWhiteSpace(password_textbox.Text))
@@ -36,24 +40,28 @@ namespace KanbanBoard.Forms
                 return;
             }
             #endregion
-
-            String login = login_textbox.Text;
             FirebaseResponse response = await client.GetAsync(@"Users/" + login_textbox.Text);
-            Data res = response.ResultAs<Data>();
+            Data result = response.ResultAs<Data>();
+
             Data current_data = new Data()
             {
-                login = login_textbox.Text,
-                password = password_textbox.Text
+                Login = login_textbox.Text,
+                Password = password_textbox.Text
             };
 
-            if (Data.isEquals(res, current_data))
+                    
+            if (Data.isEquals(result, current_data))
             {
                 MainForm main = new MainForm();
                 this.Hide();
+                signin_btn.Enabled = true;
                 main.ShowDialog();
             }
-            else { Data.ShowError(); }
-            
+
+            else { 
+                Data.ShowError();
+                signin_btn.Enabled = true;
+            }
         }
 
         public void pictureBoxEye_MouseDown(object sender, MouseEventArgs e)
@@ -70,12 +78,7 @@ namespace KanbanBoard.Forms
         {
             try
             {
-                client = new FirebaseClient(
-                    new FirebaseConfig
-                    {
-                        AuthSecret = "EalE4Ra04uGQuLuA0zEhemNqzL2q0kAxzhJxHZrt",
-                        BasePath = "https://kanbanboard-c892f-default-rtdb.europe-west1.firebasedatabase.app/"
-                    });
+                client = new FireSharp.FirebaseClient(config);
             }
             catch
             {

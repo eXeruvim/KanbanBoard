@@ -28,18 +28,18 @@ namespace KanbanBoard.Forms
 
             return true;
         }
-        public async void sendData(Object data, String login)
+        public void sendData(Object data, String login)
         {
 
             if (makeConnection())
                 try
                 {
                     // Отправка на сервер
-                    SetResponse response = await client.SetAsync("Users/" + login, data);
+                    FirebaseResponse response =  client.Push("Users/" + login, data);
                     Data result = response.ResultAs<Data>();
 
                     connectionState = true;
-                    MessageBox.Show("Регистрация прошла успешно, " + result.login);
+                    MessageBox.Show("Регистрация прошла успешно, " + result.Login);
                     name_textBox.Text = string.Empty;
                     login_textBox.Text = string.Empty;
                     email_textBox.Text = string.Empty;
@@ -56,7 +56,6 @@ namespace KanbanBoard.Forms
                     MessageBox.Show("Не удалось соединиться с сервером");
                 }
         }
-
         // ---------------
         private String text;
         public SignUp()
@@ -72,10 +71,10 @@ namespace KanbanBoard.Forms
                     String login = login_textBox.Text;
                     var data = new Data
                     {
-                        name = name_textBox.Text,
-                        login = login_textBox.Text,
-                        email = email_textBox.Text,
-                        password = pass_textBox.Text,
+                        Name = name_textBox.Text,
+                        Login = login_textBox.Text,
+                        Email = email_textBox.Text,
+                        Password = pass_textBox.Text,
                     };
                     sendData(data, login);
                 }
