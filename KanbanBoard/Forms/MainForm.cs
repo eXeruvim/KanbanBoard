@@ -17,6 +17,7 @@ namespace KanbanBoard.Forms
         public MainForm()
         {
             InitializeComponent();
+            SlideToLeftMenu();
             this.Padding = new Padding(borderSize);
             this.BackColor = Color.FromArgb(255, 255, 255);
         }
@@ -74,6 +75,8 @@ namespace KanbanBoard.Forms
             this.WindowState = FormWindowState.Minimized;
         }
 
+       
+
         private void restore_iconButton_Click(object sender, EventArgs e)
         {
             if (this.WindowState == FormWindowState.Normal)
@@ -85,6 +88,39 @@ namespace KanbanBoard.Forms
         private void exit_iconButton_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void menu_iconBtn_Click(object sender, EventArgs e)
+        {
+            SlideToLeftMenu();
+        }
+
+        private void SlideToLeftMenu()
+        {
+            if (this.menu_panel.Width >= 180)
+            {
+                menu_panel.Width = 100;
+                menu_iconBtn.Dock = DockStyle.Top;
+                foreach (Button menubtn in menu_panel.Controls.OfType<Button>())
+                {
+                    menubtn.Text = "";
+                    menubtn.ImageAlign = ContentAlignment.MiddleCenter;
+                    menubtn.Padding = new Padding(0);
+                }
+         
+            }
+            else
+            {
+                menu_panel.Width = 190;
+                menu_iconBtn.Dock = DockStyle.None;
+                foreach (Button menubtn in menu_panel.Controls.OfType<Button>())
+                {
+                    menubtn.Text = "   " + menubtn.Tag.ToString();
+                    menubtn.ImageAlign = ContentAlignment.MiddleLeft;
+                    menubtn.Padding = new Padding(10,0,0,0);
+                }
+         
+            }
         }
     }
 }
