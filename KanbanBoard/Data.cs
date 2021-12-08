@@ -8,10 +8,10 @@ namespace KanbanBoard
 {
     class Data
     {
-        public string Name { get; set; }
-        public string Login { get; set; }
-        public string Email { get; set; }
-        public string Password { get; set; }
+        public string name { get; set; }
+        public string login { get; set; }
+        public string email { get; set; }
+        public string password { get; set; }
 
         private static string error = "Неправильный логин";
 
@@ -25,11 +25,11 @@ namespace KanbanBoard
             {
                 return false;
             }
-            if (data1.Login != data2.Login)
+            if (data1.login != data2.login)
             {
                 return false;
             }
-            if (data1.Password != data2.Password)
+            if (data1.password != data2.password)
             {
                 error = "Неправильный пароль";
                 return false;
