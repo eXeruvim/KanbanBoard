@@ -1,12 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace KanbanBoard.Forms
@@ -20,7 +15,7 @@ namespace KanbanBoard.Forms
             SlideToLeftMenu();
             OpenChildForm(new MainChildFormBoards());
             this.Padding = new Padding(borderSize);
-            this.BackColor = Color.FromArgb(255, 255, 255);
+            this.BackColor = Color.FromArgb(23, 21, 32);
         }
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
         private extern static void ReleaseCapture();
@@ -100,7 +95,11 @@ namespace KanbanBoard.Forms
         {
             if (this.menu_panel.Width >= 180)
             {
-                menu_panel.Width = 100;
+                for (int i = 180; i > 100;)
+                {
+                    menu_panel.Width = i;
+                    i = i - 4;
+                }
                 menu_iconBtn.Dock = DockStyle.Top;
                 foreach (Button menubtn in menu_panel.Controls.OfType<Button>())
                 {
@@ -112,7 +111,11 @@ namespace KanbanBoard.Forms
             }
             else
             {
-                menu_panel.Width = 190;
+                for (int i = 100; i < 190;)
+                {
+                    menu_panel.Width = i;
+                    i = i + 4;
+                }
                 menu_iconBtn.Dock = DockStyle.None;
                 foreach (Button menubtn in menu_panel.Controls.OfType<Button>())
                 {
