@@ -18,6 +18,7 @@ namespace KanbanBoard.Forms
         {
             InitializeComponent();
             SlideToLeftMenu();
+            OpenChildForm(new MainChildFormBoards());
             this.Padding = new Padding(borderSize);
             this.BackColor = Color.FromArgb(255, 255, 255);
         }
@@ -107,7 +108,7 @@ namespace KanbanBoard.Forms
                     menubtn.ImageAlign = ContentAlignment.MiddleCenter;
                     menubtn.Padding = new Padding(0);
                 }
-         
+                menu_iconBtn.Dock = DockStyle.Left;
             }
             else
             {
@@ -121,6 +122,42 @@ namespace KanbanBoard.Forms
                 }
          
             }
+        }
+
+        private Form activeForm = null;
+        private void OpenChildForm(Form childForm)
+        {
+            if (activeForm != null)
+                activeForm.Close();
+            activeForm = childForm;
+            childForm.TopLevel = false;
+            childForm.FormBorderStyle = FormBorderStyle.None;
+            childForm.Dock = DockStyle.Fill;
+            panel_childForm.Controls.Add(childForm);
+            panel_childForm.Tag = childForm;
+            childForm.BringToFront();
+            childForm.Show();
+        }
+
+        private void projects_iconButton_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new MainChildFormBoards());
+            
+        }
+
+        private void chat_iconButton_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new MainChildFormChat());
+        }
+
+        private void settings_iconButton_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new MainChildFormSettings());
+        }
+
+        private void profile_iconButton_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new MainChildFormProfile());
         }
     }
 }

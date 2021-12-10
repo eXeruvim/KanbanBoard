@@ -46,8 +46,8 @@ namespace KanbanBoard.Forms
 
             Data current_data = new Data()
             {
-                Login = login_textbox.Text,
-                Password = password_textbox.Text
+                login = login_textbox.Text,
+                password = password_textbox.Text
             };
 
                     
