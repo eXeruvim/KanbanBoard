@@ -39,7 +39,7 @@ namespace KanbanBoard.Forms
                     Data result = response.ResultAs<Data>();
 
                     connectionState = true;
-                    MessageBox.Show("Регистрация прошла успешно, " + result.Login);
+                    MessageBox.Show("Регистрация прошла успешно, " + result.login);
                     name_textBox.Text = string.Empty;
                     login_textBox.Text = string.Empty;
                     email_textBox.Text = string.Empty;
@@ -71,10 +71,10 @@ namespace KanbanBoard.Forms
                     String login = login_textBox.Text;
                     var data = new Data
                     {
-                        Name = name_textBox.Text,
-                        Login = login_textBox.Text,
-                        Email = email_textBox.Text,
-                        Password = pass_textBox.Text,
+                        name = name_textBox.Text,
+                        login = login_textBox.Text,
+                        email = email_textBox.Text,
+                        password = pass_textBox.Text,
                     };
                     sendData(data, login);
                 }
