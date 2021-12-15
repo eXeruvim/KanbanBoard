@@ -47,7 +47,7 @@ namespace KanbanBoard.Forms
             Data current_data = new Data()
             {
                 login = login_textbox.Text,
-                password = password_textbox.Text
+                password = Encrypting.sha256(password_textbox.Text)
             };
 
                     
@@ -65,16 +65,6 @@ namespace KanbanBoard.Forms
             }
         }
 
-        public void pictureBoxEye_MouseDown(object sender, MouseEventArgs e)
-        {
-            pictureBoxEye.Image = Properties.Resources.eyeTrue;
-            password_textbox.UseSystemPasswordChar = false;
-        }
-        public void pictureBoxEye_MouseUp(object sender, MouseEventArgs e)
-        {
-            password_textbox.UseSystemPasswordChar = true;
-            pictureBoxEye.Image = Properties.Resources.eyeFalse;
-        }
         private void Auth_Load(object sender, EventArgs e)
         {
             try
@@ -85,6 +75,18 @@ namespace KanbanBoard.Forms
             {
                 MessageBox.Show("Ошибка соединения");
             }
+        }
+
+        private void eye_iconButton_MouseDown(object sender, MouseEventArgs e)
+        {
+            eye_iconButton.IconChar = FontAwesome.Sharp.IconChar.Eye;
+            password_textbox.UseSystemPasswordChar = false;
+        }
+
+        private void eye_iconButton_MouseUp(object sender, MouseEventArgs e)
+        {
+            eye_iconButton.IconChar = FontAwesome.Sharp.IconChar.EyeSlash;
+            password_textbox.UseSystemPasswordChar = true;
         }
     }
 }

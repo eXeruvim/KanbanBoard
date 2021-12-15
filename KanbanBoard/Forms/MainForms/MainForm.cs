@@ -3,6 +3,7 @@ using System.Drawing;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
+using KanbanBoard.Utils;
 
 namespace KanbanBoard.Forms
 {
@@ -14,13 +15,20 @@ namespace KanbanBoard.Forms
             InitializeComponent();
             SlideToLeftMenu();
             OpenChildForm(new MainChildFormBoards());
+            SetDoubleBuffered(menu_panel);
+            SetDoubleBuffered(this);
+
             this.Padding = new Padding(borderSize);
             this.BackColor = Color.FromArgb(23, 21, 32);
         }
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
         private extern static void ReleaseCapture();
         [DllImport("user32.DLL", EntryPoint = "SendMessage")]
-        private extern static void SendMessage(System.IntPtr hWnd, int wMsg, int wParam, int lParam);
+        private extern static void SendMessage(IntPtr hWnd, int wMsg, int wParam, int lParam);
+
+        
+
+
 
         private void upper_panel_MouseDown(object sender, MouseEventArgs e)
         {
@@ -71,8 +79,7 @@ namespace KanbanBoard.Forms
             this.WindowState = FormWindowState.Minimized;
         }
 
-       
-
+      
         private void restore_iconButton_Click(object sender, EventArgs e)
         {
             if (this.WindowState == FormWindowState.Normal)
@@ -95,11 +102,7 @@ namespace KanbanBoard.Forms
         {
             if (this.menu_panel.Width >= 180)
             {
-                for (int i = 180; i > 100;)
-                {
-                    menu_panel.Width = i;
-                    i = i - 4;
-                }
+                menu_panel.Width = 100;
                 menu_iconBtn.Dock = DockStyle.Top;
                 foreach (Button menubtn in menu_panel.Controls.OfType<Button>())
                 {
@@ -111,11 +114,7 @@ namespace KanbanBoard.Forms
             }
             else
             {
-                for (int i = 100; i < 190;)
-                {
-                    menu_panel.Width = i;
-                    i = i + 4;
-                }
+                menu_panel.Width = 180;
                 menu_iconBtn.Dock = DockStyle.None;
                 foreach (Button menubtn in menu_panel.Controls.OfType<Button>())
                 {
@@ -161,6 +160,22 @@ namespace KanbanBoard.Forms
         private void profile_iconButton_Click(object sender, EventArgs e)
         {
             OpenChildForm(new MainChildFormProfile());
+        }
+
+        private void add_iconButton_Click(object sender, EventArgs e)
+        {
+            Program.mainChildFormBoards.add();
+        }
+
+
+        public static void SetDoubleBuffered(Control c)
+        {
+            if (SystemInformation.TerminalServerSession)
+                return;
+            var aProp = typeof(Control).GetProperty("DoubleBuffered",
+                System.Reflection.BindingFlags.NonPublic |
+                System.Reflection.BindingFlags.Instance);
+            aProp?.SetValue(c, true, null);
         }
     }
 }

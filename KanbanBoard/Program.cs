@@ -8,6 +8,7 @@ namespace KanbanBoard.Forms
 {
     static class Program
     {
+        public static MainChildFormBoards mainChildFormBoards;
         /// <summary>
         ///  The main entry point for the application.
         /// </summary>

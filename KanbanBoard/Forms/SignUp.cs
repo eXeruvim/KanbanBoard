@@ -74,7 +74,7 @@ namespace KanbanBoard.Forms
                         name = name_textBox.Text,
                         login = login_textBox.Text,
                         email = email_textBox.Text,
-                        password = pass_textBox.Text,
+                        password = Encrypting.sha256(pass_textBox.Text),
                     };
                     sendData(data, login);
                 }
@@ -173,7 +173,7 @@ namespace KanbanBoard.Forms
 
         private void reloadCaptcha(object sender, EventArgs e)
         {
-            reloadCaptcha();
+            
         }
 
         public void reloadCaptcha()
@@ -199,6 +199,11 @@ namespace KanbanBoard.Forms
             Form auth = Application.OpenForms[0];
             auth.Show();
             this.Close();
+        }
+
+        private void reload_iconButton_Click(object sender, EventArgs e)
+        {
+            reloadCaptcha();
         }
     }
 }
