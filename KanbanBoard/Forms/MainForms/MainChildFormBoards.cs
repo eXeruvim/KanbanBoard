@@ -3,8 +3,6 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace KanbanBoard.Forms
@@ -24,10 +22,7 @@ namespace KanbanBoard.Forms
             typeof(TableLayoutPanel).GetProperty("DoubleBuffered", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance).SetValue(Board, true, null);
             Board.Resize += (s, a) => ResizeTable();
         }
-        Point downPoint;
-        bool moved;
-        Dictionary<TableLayoutPanelCellPosition, Rectangle> dict = new Dictionary<TableLayoutPanelCellPosition, Rectangle>();
-
+    
         public void AddPanel()
         {
             var column = 0;
@@ -43,7 +38,7 @@ namespace KanbanBoard.Forms
             if (Board.ColumnStyles.Count > 1 && column == 0)
                 column = Board.ColumnStyles.Count;
             AddTitleToPanel("Название", column);
-            AddControlToPanel("Название", "Описание", "Участники", column, 1);
+            AddControlToPanel("Название", "", "Участники", column, 1);
         }
 
         private void AddTitleToPanel(string textOfLabel, int column)
@@ -61,25 +56,25 @@ namespace KanbanBoard.Forms
             Board.Controls.Add(titlePanel, column, 0);
             Board.ResumeLayout();
 
-            // Изменить заголовок
+            // Изменить название
             titlePanel.TitleColumnLabel.Click += (s, a) =>
             {
-                if (!Application.OpenForms.OfType<ChangeTitleForm>().Any())
-                    new ChangeTitleForm(this, titlePanel).Show();
+                if (!Application.OpenForms.OfType<ChangePanelNameForm>().Any())
+                    new ChangePanelNameForm(this, titlePanel).Show();
             };
 
-            // Добавляем события на кнопки
+            // Добавить строку
             titlePanel.PlusButton.Click += (s, a) =>
             {
                 for (var row = 1; row <= Board.RowStyles.Count; row++)
                 {
                     if (!(Board.GetControlFromPosition(column, row) is null)) continue;
-                    AddControlToPanel("Название", "Описание", "Участники", column, row);
+                    AddControlToPanel("Название", "", "Участники", column, row);
                     break;
                 }
             };
 
-            // Удалить колонку
+            // Удалить столбец
             titlePanel.DelColumnButton.Click += (s, a) =>
             {
                 for (var i = 1; i < Board.ColumnStyles.Count; i++)
@@ -105,21 +100,20 @@ namespace KanbanBoard.Forms
                 ResizeTable();
             };
 
-            // Изменить заголовок
+            // Изменить название панели
             titlePanel.Click += (s, a) =>
             {
-                if (!Application.OpenForms.OfType<ChangeTitleForm>().Any())
-                    new ChangeTitleForm(this, titlePanel).Show();
+                if (!Application.OpenForms.OfType<ChangePanelNameForm>().Any())
+                    new ChangePanelNameForm(this, titlePanel).Show();
             };
         }
 
 
         private void AddControlToPanel(Control control, int column, int row)
         {
-            // Инициализация имени панели тикета
             control.Name = $"ticket{column}{row}";
 
-            // Нужно ли добавлять доп. строки и/или колонки
+            // Нужно ли добавлять доп. строки и/или столбцы
             if (Board.RowStyles.Count <= row)
             {
                 Board.RowCount++;
@@ -146,11 +140,10 @@ namespace KanbanBoard.Forms
             control.Ticket.Text = ticket;
             control.People.Text = people;
             SetEventsOnTicket(control);
-            //SetEvents(control);
-            // Инициализация имени панели тикета
+
             control.Name = $"ticket{column}{row}";
 
-            // Нужно ли добавлять доп. строки и/или колонки
+            // Нужно ли добавлять что-то
             if (Board.RowStyles.Count <= row)
             {
                 Board.RowCount++;
@@ -193,7 +186,6 @@ namespace KanbanBoard.Forms
                 Board.RowStyles[0].SizeType = SizeType.Absolute;
                 Board.RowStyles[0].Height = 25;
 
-                // Строки
                 foreach (var row in Board.RowStyles.Cast<RowStyle>().ToList().Skip(1))
                 {
                     row.SizeType = SizeType.Percent;
@@ -205,76 +197,49 @@ namespace KanbanBoard.Forms
                     if (Board.GetCellPosition(x).Row != 0) x.Height = Board.Height / Board.RowCount;
                 });
             }
-            catch (Exception e) { Console.WriteLine("Ошибка" + e.Message); }
-        }
-
-        private void SetEvents(TicketPanel panel)
-        {
-
-            panel.MouseDown += Panel_MouseDown;
-            /*panel.MouseMove += Panel_MouseMove;
-            panel.MouseUp += Panel_MouseUp;
-            */
-        }
-
-        private void Panel_MouseUp(object sender, MouseEventArgs e)
-        {
-            Control panel = sender as Control;
-            if (moved)
-            {
-                SetControl(panel, e.Location);
-                panel.Parent = Board;
-                moved = false;
-                ResizeTable();
-            }
+            catch (Exception e) { }
         }
 
         private void Panel_MouseDown(object sender, MouseEventArgs e)
         {
             ((Control)sender).DoDragDrop(sender, DragDropEffects.All);
-            /*
-            Control panel = sender as Control;
-            panel.Parent = this;
-            panel.BringToFront();
-            downPoint = e.Location;
-            ResizeTable();
-            */
-        }
-        private void Panel_MouseMove(object sender, MouseEventArgs e)
-        {
-            Control panel = sender as Control;
-            if (e.Button == MouseButtons.Left)
-            {
-                panel.Left += e.X - downPoint.X;
-                panel.Top += e.Y - downPoint.Y;
-                moved = true;
-                Board.Invalidate();
-                ResizeTable();
-            }
-        }
-        private void SetControl(Control c, Point position)
-        {
-            Point localPoint = Board.PointToClient(c.PointToScreen(position));
-            var keyValue = dict.FirstOrDefault(e => e.Value.Contains(localPoint));
-            if (!keyValue.Equals(default(KeyValuePair<TableLayoutPanelCellPosition, Rectangle>)))
-            {
-                Board.SetCellPosition(c, keyValue.Key);
-                ResizeTable();
-            }
         }
 
         // События на кнопки
         private void SetEventsOnTicket(TicketPanel ticketPanel)
         {
             
-            // Событие по клику на каждый тикет. Открывает панель для выполнения изменений выбранного тикета
+            // Вызов редактирования 
             ticketPanel.MouseDown += (sender, args) =>
             {
                 // Показ панели. Возврат к тикетам. Масштабируемость
                 if (!Application.OpenForms.OfType<TicketsChangeForm>().Any() && args.Button == MouseButtons.Right) new TicketsChangeForm(this, ticketPanel).Show();
             };
+
+            ticketPanel.AddButton.Click += (sender, args) =>
+            {
+                var contr = ticketPanel.Controls.OfType<CheckBox>().Count();
+                if (contr != 8)
+                {
+                    CheckBox Task = new CheckBox()
+                    {
+                        Name = "Task",
+                        Text = "Задача",
+                        Font = new Font("Lucida Sans Unicode", 10f),
+                        Margin = new Padding(20, 20, 40, 20),
+                        Location = new Point(Size.Width - Size.Width + 10, Size.Height / 2),
+                        Top = 40 + contr * 25,
+                    };
+                    ticketPanel.Controls.Add(Task);
+                }
+                else
+                {
+                    MessageBox.Show("Достигнут лимит задач в одном тикете!");
+                }
+            };
+
             // Удаление тикета
-            ticketPanel.DelButton.Click += (sender, w) => Board.Controls.Remove(ticketPanel);
+            ticketPanel.DelButton.Click += (sender, args) => Board.Controls.Remove(ticketPanel);
 
             ticketPanel.MouseDown += Panel_MouseDown;
         }
@@ -284,7 +249,9 @@ namespace KanbanBoard.Forms
            if (e.Data.GetDataPresent(typeof(TicketPanel)))
                e.Effect = DragDropEffects.All;
         }
+
         Point ptOriginal = Point.Empty;
+
         private void Board_DragOver(object sender, DragEventArgs e)
         {
             ((Control)e.Data.GetData(typeof(TicketPanel))).Location =

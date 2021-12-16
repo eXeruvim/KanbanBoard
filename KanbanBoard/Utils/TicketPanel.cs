@@ -11,7 +11,9 @@ namespace KanbanBoard.Utils
         public Label Title { get; set; }
         public Label Ticket { get; set; }
         public Label People { get; set; }
+        public CheckBox Task { get; set; }
         public Button DelButton { get; set; }
+        public Button AddButton { get; set; }
 
         public TicketPanel()
         {
@@ -26,7 +28,7 @@ namespace KanbanBoard.Utils
             {
                 Name = "Title",
                 Text = "Заголовок",
-                Font = new Font("Tahoma", 9.25f, FontStyle.Bold),
+                Font = new Font("Tahoma", 12f, FontStyle.Bold),
                 Location = new Point(Size.Width - Size.Width + 5, Size.Height - Size.Height + 5),
                 Margin = new Padding(20, 20, 40, 20),
             };
@@ -44,21 +46,29 @@ namespace KanbanBoard.Utils
                 Margin = new Padding(5),
                 Location = new Point(Size.Width - Size.Width + 5, Size.Height - 5),
             };
+
             new List<Label> { Title, Ticket, People }.ForEach(x =>
             {
                 x.ForeColor = Color.Black;
                 x.AutoSize = true;
             });
 
-            // Добавляем панель с кнопками перемещений и удаления тикета
-            // кнопка удаления тикета, перемещения ВПРАВО, перемещения ВЛЕВО
             DelButton = new Button()
             {
                 Name = "delButton",
                 Text = "✖",
                 Font = new Font("Tahoma", 7.5f),
             };
-            new List<Button>() { DelButton }.ForEach(x =>
+
+            AddButton = new Button()
+            {
+                Name = "addButton",
+                Text = "Добавить задачу",
+                Font = new Font("Tahoma", 7.5f),
+                Dock = DockStyle.Bottom,
+            };
+
+            new List<Button>() { DelButton}.ForEach(x =>
              {
                  x.BackColor = Color.Transparent;
                  x.FlatAppearance.MouseDownBackColor = Color.Transparent;
@@ -72,7 +82,21 @@ namespace KanbanBoard.Utils
                  x.MouseLeave += (s, a) => x.ForeColor = Color.Black;
              });
 
-            Controls.AddRange(new Control[] { DelButton });
+            new List<Button>() { AddButton }.ForEach(x =>
+            {
+                x.AutoSize = true;
+                x.Size = new Size(15, 15);
+                x.FlatStyle = FlatStyle.Flat;
+                x.FlatAppearance.BorderSize = 1;
+                x.ForeColor = Color.Yellow;
+                x.BackColor = Color.Black;
+                x.MouseEnter += (s, a) => x.ForeColor = Color.Red;
+                x.MouseLeave += (s, a) => x.ForeColor = Color.Yellow;
+            });
+
+
+
+            Controls.AddRange(new Control[] { DelButton, AddButton });
             Controls.AddRange(new Control[] { Title, Ticket, People });
         }
 
@@ -89,6 +113,7 @@ namespace KanbanBoard.Utils
 
                 // кнопок
                 DelButton.Location = new Point(Size.Width - DelButton.Size.Width, 0);
+                
                 new List<Control> { Title, Ticket, People }.ForEach(x => x.MaximumSize = new Size(Size.Width - 5, Size.Height));
             }));
         }

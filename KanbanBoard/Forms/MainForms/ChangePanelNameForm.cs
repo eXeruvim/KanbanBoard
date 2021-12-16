@@ -4,11 +4,11 @@ using System.Windows.Forms;
 
 namespace KanbanBoard.Forms
 {
-    public partial class ChangeTitleForm : Form
+    public partial class ChangePanelNameForm : Form
     {
         public new MainChildFormBoards Owner { get; }
         private readonly Panels _titlePanel;
-        public ChangeTitleForm(MainChildFormBoards owner, Panels titlePanel)
+        public ChangePanelNameForm(MainChildFormBoards owner, Panels titlePanel)
         {
             Owner = owner;
             _titlePanel = titlePanel;
