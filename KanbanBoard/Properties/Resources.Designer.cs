@@ -31,7 +31,9 @@ namespace KanbanBoard.Properties {
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
         internal Resources() {
         }
-        
+
+        public static object Volny_na_vode { get; internal set; }
+
         /// <summary>
         ///   Возвращает кэшированный экземпляр ResourceManager, использованный этим классом.
         /// </summary>

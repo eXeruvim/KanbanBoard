@@ -1,9 +1,12 @@
 ﻿using System;
+using FireSharp.Config;
+using FireSharp.Interfaces;
+using FireSharp.Response;
 using System.Drawing;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
-using KanbanBoard.Utils;
+//using KanbanBoard.Utils;
 
 namespace KanbanBoard.Forms
 {
@@ -13,6 +16,7 @@ namespace KanbanBoard.Forms
         public MainForm()
         {
             InitializeComponent();
+            CustomDesignMenu();
             SlideToLeftMenu();
             OpenChildForm(new MainChildFormBoards());
             SetDoubleBuffered(menu_panel);
@@ -100,7 +104,7 @@ namespace KanbanBoard.Forms
 
         private void SlideToLeftMenu()
         {
-            if (this.menu_panel.Width >= 180)
+            if (this.menu_panel.Width >= 190)
             {
                 menu_panel.Width = 100;
                 menu_iconBtn.Dock = DockStyle.Top;
@@ -114,7 +118,7 @@ namespace KanbanBoard.Forms
             }
             else
             {
-                menu_panel.Width = 180;
+                menu_panel.Width = 190;
                 menu_iconBtn.Dock = DockStyle.None;
                 foreach (Button menubtn in menu_panel.Controls.OfType<Button>())
                 {
@@ -143,28 +147,33 @@ namespace KanbanBoard.Forms
 
         private void projects_iconButton_Click(object sender, EventArgs e)
         {
+            ShowSubMenu(submenu_boards);
             OpenChildForm(new MainChildFormBoards());
-            
+            add_iconButton.Visible = true;
+
         }
 
         private void chat_iconButton_Click(object sender, EventArgs e)
         {
             OpenChildForm(new MainChildFormChat());
+            add_iconButton.Visible = false;
         }
 
         private void settings_iconButton_Click(object sender, EventArgs e)
         {
             OpenChildForm(new MainChildFormSettings());
+            add_iconButton.Visible = false;
         }
 
         private void profile_iconButton_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new MainChildFormProfile());
+            add_iconButton.Visible = false;
+            ShowSubMenu(submenu_profile);
         }
 
         private void add_iconButton_Click(object sender, EventArgs e)
         {
-            Program.mainChildFormBoards.add();
+           // Program.mainChildFormBoards.add();
         }
 
 
@@ -176,6 +185,51 @@ namespace KanbanBoard.Forms
                 System.Reflection.BindingFlags.NonPublic |
                 System.Reflection.BindingFlags.Instance);
             aProp?.SetValue(c, true, null);
+        }
+        
+        private void CustomDesignMenu()
+        {
+            submenu_profile.Visible = false;
+            submenu_boards.Visible = false;
+        }
+
+        private void HideSubMenu()
+        {
+            if (submenu_profile.Visible == true)
+            {
+                submenu_profile.Visible = false;
+            }
+
+            if (submenu_boards.Visible == true)
+            {
+                submenu_boards.Visible = false;
+            }
+        }
+
+        private void ShowSubMenu(Panel SubMenu)
+        {
+            if (SubMenu.Visible == false)
+            {
+                HideSubMenu();
+                SubMenu.Visible = true;
+            }
+            else
+                SubMenu.Visible = false;
+
+        }
+
+        private void iconButton1_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new MainChildFormProfile());
+        }
+
+        private void logout_btn_Click(object sender, EventArgs e)
+        {
+            Auth auth = new Auth();
+            auth.Show();
+            this.Close();
+            
+            
         }
     }
 }

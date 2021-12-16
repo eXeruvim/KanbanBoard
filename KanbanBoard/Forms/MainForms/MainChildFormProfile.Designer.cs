@@ -55,7 +55,7 @@ namespace KanbanBoard.Forms
             // pictureBox1
             // 
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pictureBox1.Image = global::KanbanBoard.Properties.Resources.Volny_na_vode;
+            this.pictureBox1.Image = (System.Drawing.Image)global::KanbanBoard.Properties.Resources.Volny_na_vode;
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(843, 169);
@@ -191,7 +191,6 @@ namespace KanbanBoard.Forms
             // pictureBox2
             // 
             this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox2.BackgroundImage = global::KanbanBoard.Properties.Resources.Volny_na_vode;
             this.pictureBox2.Location = new System.Drawing.Point(303, 12);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(226, 131);
