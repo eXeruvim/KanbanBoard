@@ -225,11 +225,9 @@ namespace KanbanBoard.Forms
 
         private void logout_btn_Click(object sender, EventArgs e)
         {
-            Auth auth = new Auth();
-            auth.Show();
-            this.Close();
-            
-            
+            Form auth = Application.OpenForms[0];
+            this.Hide();
+            auth.ShowDialog();
         }
     }
 }
