@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
 
@@ -80,8 +79,6 @@ namespace KanbanBoard.Utils
         protected override void OnPaint(PaintEventArgs e)
         {
             base.OnPaint(e);
-
-            // Сглаживание углов
 
             BeginInvoke((MethodInvoker)(() =>
             {

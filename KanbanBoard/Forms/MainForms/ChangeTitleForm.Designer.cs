@@ -1,5 +1,4 @@
-﻿
-namespace KanbanBoard.Forms.MainForms
+﻿namespace KanbanBoard.Forms
 {
     partial class ChangeTitleForm
     {
@@ -35,24 +34,22 @@ namespace KanbanBoard.Forms.MainForms
             // 
             // TitleTextBox
             // 
-            this.TitleTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.TitleTextBox.Location = new System.Drawing.Point(59, 8);
-            this.TitleTextBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.TitleTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
+            this.TitleTextBox.Location = new System.Drawing.Point(51, 7);
             this.TitleTextBox.Name = "TitleTextBox";
-            this.TitleTextBox.Size = new System.Drawing.Size(209, 26);
+            this.TitleTextBox.Size = new System.Drawing.Size(180, 26);
             this.TitleTextBox.TabIndex = 1;
             // 
             // ChangeTitleForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(22)))), ((int)(((byte)(46)))));
-            this.ClientSize = new System.Drawing.Size(330, 46);
+            this.ClientSize = new System.Drawing.Size(283, 40);
             this.Controls.Add(this.TitleTextBox);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
-            this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.Name = "ChangeTitleForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Изменение заголовка";

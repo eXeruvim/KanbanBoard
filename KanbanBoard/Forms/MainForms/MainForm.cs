@@ -163,7 +163,7 @@ namespace KanbanBoard.Forms
 
         private void add_iconButton_Click(object sender, EventArgs e)
         {
-            Program.mainChildFormBoards.addPanel();
+            Program.mainChildFormBoards.AddPanel();
         }
 
 

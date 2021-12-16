@@ -46,7 +46,6 @@ namespace KanbanBoard.Forms
             this.Board.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.Board.Size = new System.Drawing.Size(753, 453);
             this.Board.TabIndex = 0;
-            this.Board.CellPaint += new System.Windows.Forms.TableLayoutCellPaintEventHandler(this.Board_CellPaint);
             // 
             // MainChildFormBoards
             // 
