@@ -3,7 +3,6 @@ using System.Drawing;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
-using KanbanBoard.Utils;
 
 namespace KanbanBoard.Forms
 {
@@ -164,7 +163,7 @@ namespace KanbanBoard.Forms
 
         private void add_iconButton_Click(object sender, EventArgs e)
         {
-            Program.mainChildFormBoards.add();
+            Program.mainChildFormBoards.addPanel();
         }
 
 

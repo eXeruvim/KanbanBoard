@@ -29,6 +29,7 @@ namespace KanbanBoard.Forms
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.menu_panel = new System.Windows.Forms.Panel();
             this.settings_iconButton = new FontAwesome.Sharp.IconButton();
             this.profile_iconButton = new FontAwesome.Sharp.IconButton();
@@ -304,6 +305,7 @@ namespace KanbanBoard.Forms
             this.Controls.Add(this.panel_childForm);
             this.Controls.Add(this.upper_panel);
             this.Controls.Add(this.menu_panel);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

@@ -29,6 +29,7 @@ namespace KanbanBoard.Forms
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Auth));
             this.login = new System.Windows.Forms.Label();
             this.password = new System.Windows.Forms.Label();
             this.password_textbox = new System.Windows.Forms.TextBox();
@@ -129,6 +130,7 @@ namespace KanbanBoard.Forms
             this.Controls.Add(this.password);
             this.Controls.Add(this.login);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Auth";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Авторизация";
