@@ -34,6 +34,7 @@ namespace KanbanBoard.Forms
             // 
             // Board
             // 
+            this.Board.AllowDrop = true;
             this.Board.AutoScroll = true;
             this.Board.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
             this.Board.ColumnCount = 1;
@@ -46,6 +47,9 @@ namespace KanbanBoard.Forms
             this.Board.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.Board.Size = new System.Drawing.Size(753, 453);
             this.Board.TabIndex = 0;
+            this.Board.DragDrop += new System.Windows.Forms.DragEventHandler(this.Board_DragDrop);
+            this.Board.DragEnter += new System.Windows.Forms.DragEventHandler(this.Board_DragEnter);
+            this.Board.DragOver += new System.Windows.Forms.DragEventHandler(this.Board_DragOver);
             // 
             // MainChildFormBoards
             // 

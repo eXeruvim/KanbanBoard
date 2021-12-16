@@ -1,5 +1,7 @@
 ﻿using KanbanBoard.Utils;
 using System;
+using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,14 +15,18 @@ namespace KanbanBoard.Forms
         {
             InitializeComponent();
             SetDoubleBuffered(Board);
-
+            Program.mainChildFormBoards = this;
             Board.ColumnStyles.Clear();
             Board.RowStyles.Clear();
             Board.ColumnCount = 1;
             Board.RowCount = 1;
             //  this.DoubleBuffered = true;
+            typeof(TableLayoutPanel).GetProperty("DoubleBuffered", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance).SetValue(Board, true, null);
             Board.Resize += (s, a) => ResizeTable();
         }
+        Point downPoint;
+        bool moved;
+        Dictionary<TableLayoutPanelCellPosition, Rectangle> dict = new Dictionary<TableLayoutPanelCellPosition, Rectangle>();
 
         public void AddPanel()
         {
@@ -37,7 +43,7 @@ namespace KanbanBoard.Forms
             if (Board.ColumnStyles.Count > 1 && column == 0)
                 column = Board.ColumnStyles.Count;
             AddTitleToPanel("Название", column);
-            AddControlToPanel("", "", "", column, 1);
+            AddControlToPanel("Название", "Описание", "Участники", column, 1);
         }
 
         private void AddTitleToPanel(string textOfLabel, int column)
@@ -68,7 +74,7 @@ namespace KanbanBoard.Forms
                 for (var row = 1; row <= Board.RowStyles.Count; row++)
                 {
                     if (!(Board.GetControlFromPosition(column, row) is null)) continue;
-                    AddControlToPanel("", "", "", column, row);
+                    AddControlToPanel("Название", "Описание", "Участники", column, row);
                     break;
                 }
             };
@@ -140,7 +146,7 @@ namespace KanbanBoard.Forms
             control.Ticket.Text = ticket;
             control.People.Text = people;
             SetEventsOnTicket(control);
-
+            //SetEvents(control);
             // Инициализация имени панели тикета
             control.Name = $"ticket{column}{row}";
 
@@ -202,18 +208,117 @@ namespace KanbanBoard.Forms
             catch (Exception e) { Console.WriteLine("Ошибка" + e.Message); }
         }
 
-        private void SetEventsOnTicket(TicketPanel ticketPanel)
+        private void SetEvents(TicketPanel panel)
         {
-            // Событие по клику на каждый тикет. Открывает панель для выполнения изменений выбранного тикета
-            ticketPanel.Click += (sender, args) =>
-            {
-                // Показ панели. Возврат к тикетам. Масштабируемость
-                if (!Application.OpenForms.OfType<EditPanel>().Any()) new EditPanel(this, ticketPanel).Show();
-            };
 
-            // Удаление тикета
-            ticketPanel.DelButton.Click += (sender, w) => Board.Controls.Remove(ticketPanel);
+            panel.MouseDown += Panel_MouseDown;
+            /*panel.MouseMove += Panel_MouseMove;
+            panel.MouseUp += Panel_MouseUp;
+            */
         }
 
+        private void Panel_MouseUp(object sender, MouseEventArgs e)
+        {
+            Control panel = sender as Control;
+            if (moved)
+            {
+                SetControl(panel, e.Location);
+                panel.Parent = Board;
+                moved = false;
+                ResizeTable();
+            }
+        }
+
+        private void Panel_MouseDown(object sender, MouseEventArgs e)
+        {
+            ((Control)sender).DoDragDrop(sender, DragDropEffects.All);
+            /*
+            Control panel = sender as Control;
+            panel.Parent = this;
+            panel.BringToFront();
+            downPoint = e.Location;
+            ResizeTable();
+            */
+        }
+        private void Panel_MouseMove(object sender, MouseEventArgs e)
+        {
+            Control panel = sender as Control;
+            if (e.Button == MouseButtons.Left)
+            {
+                panel.Left += e.X - downPoint.X;
+                panel.Top += e.Y - downPoint.Y;
+                moved = true;
+                Board.Invalidate();
+                ResizeTable();
+            }
+        }
+        private void SetControl(Control c, Point position)
+        {
+            Point localPoint = Board.PointToClient(c.PointToScreen(position));
+            var keyValue = dict.FirstOrDefault(e => e.Value.Contains(localPoint));
+            if (!keyValue.Equals(default(KeyValuePair<TableLayoutPanelCellPosition, Rectangle>)))
+            {
+                Board.SetCellPosition(c, keyValue.Key);
+                ResizeTable();
+            }
+        }
+
+        // События на кнопки
+        private void SetEventsOnTicket(TicketPanel ticketPanel)
+        {
+            
+            // Событие по клику на каждый тикет. Открывает панель для выполнения изменений выбранного тикета
+            ticketPanel.MouseDown += (sender, args) =>
+            {
+                // Показ панели. Возврат к тикетам. Масштабируемость
+                if (!Application.OpenForms.OfType<TicketsChangeForm>().Any() && args.Button == MouseButtons.Right) new TicketsChangeForm(this, ticketPanel).Show();
+            };
+            // Удаление тикета
+            ticketPanel.DelButton.Click += (sender, w) => Board.Controls.Remove(ticketPanel);
+
+            ticketPanel.MouseDown += Panel_MouseDown;
+        }
+
+        private void Board_DragEnter(object sender, DragEventArgs e)
+        {
+           if (e.Data.GetDataPresent(typeof(TicketPanel)))
+               e.Effect = DragDropEffects.All;
+        }
+        Point ptOriginal = Point.Empty;
+        private void Board_DragOver(object sender, DragEventArgs e)
+        {
+            ((Control)e.Data.GetData(typeof(TicketPanel))).Location =
+            this.PointToClient(new Point(e.X - ptOriginal.X, e.Y - ptOriginal.Y));
+            ((Control)e.Data.GetData(typeof(TicketPanel))).BringToFront();
+        }
+
+        private void Board_DragDrop(object sender, DragEventArgs e)
+        {
+            TicketPanel ticketpanel = e.Data.GetData(typeof(TicketPanel)) as TicketPanel;
+            Point loc = this.Board.PointToClient(new Point(e.X, e.Y));
+            int columnInd = -1;
+            int rowInd = -1;
+            int x = 0;
+            int y = 0;
+            while(columnInd <= this.Board.ColumnStyles.Count)
+            {
+                if (loc.X < x)
+                {
+                    break;
+                }
+                columnInd++;
+                x += this.Board.GetColumnWidths()[columnInd];
+            }
+            while(rowInd <= this.Board.RowStyles.Count)
+            {
+                if (loc.Y < y)
+                {
+                    break;
+                }
+                rowInd++;
+                y += this.Board.GetRowHeights()[rowInd];
+            }
+            this.Board.Controls.Add(ticketpanel, columnInd, rowInd);
+        }
     }
 }

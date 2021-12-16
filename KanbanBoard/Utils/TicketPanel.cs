@@ -1,18 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Runtime.InteropServices;
 using System.Windows.Forms;
-
 
 namespace KanbanBoard.Utils
 {
     public sealed class TicketPanel : Panel
     {
-
         public Label Title { get; set; }
         public Label Ticket { get; set; }
         public Label People { get; set; }
         public Button DelButton { get; set; }
+
         public TicketPanel()
         {
             // Свойства панели
@@ -58,21 +58,21 @@ namespace KanbanBoard.Utils
                 Text = "✖",
                 Font = new Font("Tahoma", 7.5f),
             };
-            new List<Button>() { DelButton}.ForEach(x =>
-            {
-                x.BackColor = Color.Transparent;
-                x.FlatAppearance.MouseDownBackColor = Color.Transparent;
-                x.FlatAppearance.MouseOverBackColor = Color.Transparent;
-                x.AutoSize = true;
-                x.Size = new Size(15, 15);
-                x.FlatStyle = FlatStyle.Flat;
-                x.FlatAppearance.BorderSize = 0;
-                x.ForeColor = Color.Black;
-                x.MouseEnter += (s, a) => x.ForeColor = Color.Red;
-                x.MouseLeave += (s, a) => x.ForeColor = Color.Black;
-            });
+            new List<Button>() { DelButton }.ForEach(x =>
+             {
+                 x.BackColor = Color.Transparent;
+                 x.FlatAppearance.MouseDownBackColor = Color.Transparent;
+                 x.FlatAppearance.MouseOverBackColor = Color.Transparent;
+                 x.AutoSize = true;
+                 x.Size = new Size(15, 15);
+                 x.FlatStyle = FlatStyle.Flat;
+                 x.FlatAppearance.BorderSize = 0;
+                 x.ForeColor = Color.Black;
+                 x.MouseEnter += (s, a) => x.ForeColor = Color.Red;
+                 x.MouseLeave += (s, a) => x.ForeColor = Color.Black;
+             });
 
-            Controls.AddRange(new Control[] { DelButton});
+            Controls.AddRange(new Control[] { DelButton });
             Controls.AddRange(new Control[] { Title, Ticket, People });
         }
 
@@ -92,7 +92,6 @@ namespace KanbanBoard.Utils
                 new List<Control> { Title, Ticket, People }.ForEach(x => x.MaximumSize = new Size(Size.Width - 5, Size.Height));
             }));
         }
-
         public static Color GetColor() => Color.Yellow;
     }
 }
