@@ -94,6 +94,7 @@ namespace KanbanBoard.Forms
             this.settings_iconButton.Text = "Настройки";
             this.settings_iconButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.settings_iconButton.UseVisualStyleBackColor = true;
+            this.settings_iconButton.Click += new System.EventHandler(this.settings_iconButton_Click);
             // 
             // chat_iconButton
             // 
@@ -143,10 +144,12 @@ namespace KanbanBoard.Forms
             this.iconButton4.Name = "iconButton4";
             this.iconButton4.Size = new System.Drawing.Size(179, 50);
             this.iconButton4.TabIndex = 10;
+            this.iconButton4.Tag = "Присоединиться к доске";
             this.iconButton4.Text = "Присоединиться к доске";
             this.iconButton4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.iconButton4.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.iconButton4.UseVisualStyleBackColor = false;
+            this.iconButton4.Click += new System.EventHandler(this.iconButton4_Click);
             // 
             // iconButton3
             // 
@@ -164,10 +167,12 @@ namespace KanbanBoard.Forms
             this.iconButton3.Name = "iconButton3";
             this.iconButton3.Size = new System.Drawing.Size(179, 50);
             this.iconButton3.TabIndex = 9;
+            this.iconButton3.Tag = "Ваши доски";
             this.iconButton3.Text = "Ваши доски";
             this.iconButton3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.iconButton3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.iconButton3.UseVisualStyleBackColor = false;
+            this.iconButton3.Click += new System.EventHandler(this.iconButton3_Click);
             // 
             // submenu_profile
             // 
@@ -195,6 +200,7 @@ namespace KanbanBoard.Forms
             this.logout_btn.Name = "logout_btn";
             this.logout_btn.Size = new System.Drawing.Size(179, 50);
             this.logout_btn.TabIndex = 9;
+            this.logout_btn.Tag = "Выйти из аккаунта";
             this.logout_btn.Text = "Выйти из аккаунта";
             this.logout_btn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.logout_btn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -217,6 +223,7 @@ namespace KanbanBoard.Forms
             this.iconButton1.Name = "iconButton1";
             this.iconButton1.Size = new System.Drawing.Size(179, 50);
             this.iconButton1.TabIndex = 8;
+            this.iconButton1.Tag = "Настройки аккаунта";
             this.iconButton1.Text = "Настройки аккаунта";
             this.iconButton1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.iconButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -401,7 +408,7 @@ namespace KanbanBoard.Forms
             this.add_iconButton.FlatAppearance.BorderSize = 0;
             this.add_iconButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.add_iconButton.Font = new System.Drawing.Font("Lucida Sans Unicode", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.add_iconButton.ForeColor = System.Drawing.Color.Transparent;
+            this.add_iconButton.ForeColor = System.Drawing.Color.Yellow;
             this.add_iconButton.IconChar = FontAwesome.Sharp.IconChar.PlusCircle;
             this.add_iconButton.IconColor = System.Drawing.Color.Yellow;
             this.add_iconButton.IconFont = FontAwesome.Sharp.IconFont.Auto;
