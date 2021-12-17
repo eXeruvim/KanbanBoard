@@ -92,7 +92,7 @@ namespace KanbanBoard.Forms
             // 
             // name_textBox
             // 
-            this.name_textBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
+            this.name_textBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(21)))), ((int)(((byte)(32)))));
             this.name_textBox.Font = new System.Drawing.Font("Maiandra GD", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.name_textBox.ForeColor = System.Drawing.Color.Yellow;
             this.name_textBox.Location = new System.Drawing.Point(150, 31);
@@ -102,7 +102,7 @@ namespace KanbanBoard.Forms
             // 
             // login_textBox
             // 
-            this.login_textBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
+            this.login_textBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(21)))), ((int)(((byte)(32)))));
             this.login_textBox.Font = new System.Drawing.Font("Maiandra GD", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.login_textBox.ForeColor = System.Drawing.Color.Yellow;
             this.login_textBox.Location = new System.Drawing.Point(150, 77);
@@ -112,7 +112,7 @@ namespace KanbanBoard.Forms
             // 
             // email_textBox
             // 
-            this.email_textBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
+            this.email_textBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(21)))), ((int)(((byte)(32)))));
             this.email_textBox.Font = new System.Drawing.Font("Maiandra GD", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.email_textBox.ForeColor = System.Drawing.Color.Yellow;
             this.email_textBox.Location = new System.Drawing.Point(150, 123);
@@ -122,7 +122,7 @@ namespace KanbanBoard.Forms
             // 
             // pass_textBox
             // 
-            this.pass_textBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
+            this.pass_textBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(21)))), ((int)(((byte)(32)))));
             this.pass_textBox.Font = new System.Drawing.Font("Maiandra GD", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.pass_textBox.ForeColor = System.Drawing.Color.Yellow;
             this.pass_textBox.Location = new System.Drawing.Point(150, 169);
@@ -133,12 +133,12 @@ namespace KanbanBoard.Forms
             // 
             // accept_btn
             // 
-            this.accept_btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
+            this.accept_btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(21)))), ((int)(((byte)(32)))));
             this.accept_btn.Font = new System.Drawing.Font("Lucida Sans Unicode", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.accept_btn.ForeColor = System.Drawing.Color.Yellow;
-            this.accept_btn.Location = new System.Drawing.Point(32, 356);
+            this.accept_btn.Location = new System.Drawing.Point(29, 357);
             this.accept_btn.Name = "accept_btn";
-            this.accept_btn.Size = new System.Drawing.Size(130, 45);
+            this.accept_btn.Size = new System.Drawing.Size(140, 45);
             this.accept_btn.TabIndex = 8;
             this.accept_btn.Text = "Регистрация";
             this.accept_btn.UseVisualStyleBackColor = false;
@@ -146,12 +146,12 @@ namespace KanbanBoard.Forms
             // 
             // cancel_btn
             // 
-            this.cancel_btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
+            this.cancel_btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(21)))), ((int)(((byte)(32)))));
             this.cancel_btn.Font = new System.Drawing.Font("Lucida Sans Unicode", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.cancel_btn.ForeColor = System.Drawing.Color.Yellow;
-            this.cancel_btn.Location = new System.Drawing.Point(297, 356);
+            this.cancel_btn.Location = new System.Drawing.Point(294, 357);
             this.cancel_btn.Name = "cancel_btn";
-            this.cancel_btn.Size = new System.Drawing.Size(130, 45);
+            this.cancel_btn.Size = new System.Drawing.Size(140, 45);
             this.cancel_btn.TabIndex = 9;
             this.cancel_btn.Text = "Отмена";
             this.cancel_btn.UseVisualStyleBackColor = false;
@@ -168,7 +168,7 @@ namespace KanbanBoard.Forms
             // 
             // captcha_textBox
             // 
-            this.captcha_textBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
+            this.captcha_textBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(21)))), ((int)(((byte)(32)))));
             this.captcha_textBox.ForeColor = System.Drawing.Color.Yellow;
             this.captcha_textBox.Location = new System.Drawing.Point(264, 252);
             this.captcha_textBox.Name = "captcha_textBox";
@@ -177,7 +177,7 @@ namespace KanbanBoard.Forms
             // 
             // reload_iconButton
             // 
-            this.reload_iconButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
+            this.reload_iconButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(21)))), ((int)(((byte)(32)))));
             this.reload_iconButton.FlatAppearance.BorderSize = 0;
             this.reload_iconButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.reload_iconButton.Font = new System.Drawing.Font("Segoe MDL2 Assets", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -208,7 +208,7 @@ namespace KanbanBoard.Forms
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(21)))), ((int)(((byte)(32)))));
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
             this.ClientSize = new System.Drawing.Size(463, 429);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.reload_iconButton);

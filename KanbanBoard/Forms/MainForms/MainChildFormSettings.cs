@@ -15,6 +15,12 @@ namespace KanbanBoard.Forms
         public MainChildFormSettings()
         {
             InitializeComponent();
+
+            label8.Text = (Auth.mail);
+            label7.Text = (Auth.usname);
+            label9.Text = (Auth.log);
         }
+
+   
     }
 }

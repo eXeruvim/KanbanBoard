@@ -114,6 +114,9 @@ namespace KanbanBoard.Forms
                     menubtn.ImageAlign = ContentAlignment.MiddleCenter;
                     menubtn.Padding = new Padding(0);
                 }
+
+               
+
                 menu_iconBtn.Dock = DockStyle.Left;
             }
             else
@@ -126,7 +129,9 @@ namespace KanbanBoard.Forms
                     menubtn.ImageAlign = ContentAlignment.MiddleLeft;
                     menubtn.Padding = new Padding(10,0,0,0);
                 }
-         
+
+             
+
             }
         }
 
@@ -148,8 +153,8 @@ namespace KanbanBoard.Forms
         private void projects_iconButton_Click(object sender, EventArgs e)
         {
             ShowSubMenu(submenu_boards);
-            OpenChildForm(new MainChildFormBoards());
-            add_iconButton.Visible = true;
+            add_iconButton.Visible = false;
+
 
         }
 
@@ -195,15 +200,16 @@ namespace KanbanBoard.Forms
 
         private void HideSubMenu()
         {
+            if (submenu_boards.Visible == true)
+            {
+                submenu_boards.Visible = false;
+            }
             if (submenu_profile.Visible == true)
             {
                 submenu_profile.Visible = false;
             }
 
-            if (submenu_boards.Visible == true)
-            {
-                submenu_boards.Visible = false;
-            }
+            
         }
 
         private void ShowSubMenu(Panel SubMenu)
@@ -214,6 +220,7 @@ namespace KanbanBoard.Forms
                 SubMenu.Visible = true;
             }
             else
+
                 SubMenu.Visible = false;
 
         }
@@ -228,6 +235,16 @@ namespace KanbanBoard.Forms
             Form auth = Application.OpenForms[0];
             this.Hide();
             auth.ShowDialog();
+        }
+
+        private void iconButton3_Click(object sender, EventArgs e)
+        {
+            add_iconButton.Visible = true;
+        }
+
+        private void iconButton4_Click(object sender, EventArgs e)
+        {
+            add_iconButton.Visible = true;
         }
     }
 }
