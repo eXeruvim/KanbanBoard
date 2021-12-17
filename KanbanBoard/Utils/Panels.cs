@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using FontAwesome.Sharp;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -30,14 +31,15 @@ namespace KanbanBoard.Utils
             {
                 Dock = DockStyle.Right,
                 Text = "➕",
+                FlatStyle = FlatStyle.Popup,
                 Font = new Font("Tahoma", 7.5f),
                 Size = new Size(15, 15),
-                ForeColor = TicketPanel.GetColor()
+                ForeColor = Ticket.GetColor()
             };
             DelColumnButton = new Button()
             {
                 Dock = DockStyle.Right,
-                Text = "✖",
+                Text = "X",
                 Font = PlusButton.Font,
                 Size = PlusButton.Size,
                 ForeColor = PlusButton.ForeColor
@@ -53,7 +55,7 @@ namespace KanbanBoard.Utils
                 x.FlatStyle = FlatStyle.Flat;
                 x.FlatAppearance.BorderSize = 0;
                 x.MouseEnter += (s, a) => x.ForeColor = Color.Red;
-                x.MouseLeave += (s, a) => x.ForeColor = TicketPanel.GetColor();
+                x.MouseLeave += (s, a) => x.ForeColor = Ticket.GetColor();
             });
 
             Controls.AddRange(new Control[] { TitleColumnLabel, PlusButton, DelColumnButton });

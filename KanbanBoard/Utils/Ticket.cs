@@ -6,16 +6,15 @@ using System.Windows.Forms;
 
 namespace KanbanBoard.Utils
 {
-    public sealed class TicketPanel : Panel
+    public sealed class Ticket : Panel
     {
         public Label Title { get; set; }
-        public Label Ticket { get; set; }
         public Label People { get; set; }
         public CheckBox Task { get; set; }
         public Button DelButton { get; set; }
         public Button AddButton { get; set; }
 
-        public TicketPanel()
+        public Ticket()
         {
             // Свойства панели
             Dock = DockStyle.Fill;
@@ -23,21 +22,14 @@ namespace KanbanBoard.Utils
             AutoSize = true;
             DoubleBuffered = true;
 
-            // Заголовок, текст, исполнители (может быть изменено). Из чего-то мб сделать другой контрол
+            // Название, участники
             Title = new Label()
             {
                 Name = "Title",
-                Text = "Заголовок",
+                Text = "Название",
                 Font = new Font("Tahoma", 12f, FontStyle.Bold),
                 Location = new Point(Size.Width - Size.Width + 5, Size.Height - Size.Height + 5),
                 Margin = new Padding(20, 20, 40, 20),
-            };
-            Ticket = new Label()
-            {
-                Name = "Ticket",
-                Text = "Текст тикета",
-                Margin = new Padding(5),
-                Location = new Point(Size.Width - Size.Width + 5, Size.Height / 2),
             };
             People = new Label()
             {
@@ -47,7 +39,7 @@ namespace KanbanBoard.Utils
                 Location = new Point(Size.Width - Size.Width + 5, Size.Height - 5),
             };
 
-            new List<Label> { Title, Ticket, People }.ForEach(x =>
+            new List<Label> { Title, People }.ForEach(x =>
             {
                 x.ForeColor = Color.Black;
                 x.AutoSize = true;
@@ -97,7 +89,7 @@ namespace KanbanBoard.Utils
 
 
             Controls.AddRange(new Control[] { DelButton, AddButton });
-            Controls.AddRange(new Control[] { Title, Ticket, People });
+            Controls.AddRange(new Control[] { Title, People });
         }
 
         protected override void OnPaint(PaintEventArgs e)
@@ -106,15 +98,14 @@ namespace KanbanBoard.Utils
 
             BeginInvoke((MethodInvoker)(() =>
             {
-                // Изменение локаций лейблов в панели
+                // Расположение текста
                 Title.Location = new Point(Size.Width - Size.Width + 5, Size.Height - Size.Height + 15);
-                Ticket.Location = new Point(Size.Width - Size.Width + 5, Title.Location.Y + 50);
                 People.Location = new Point(Size.Width - Size.Width + 5, Size.Height - 50);
 
-                // кнопок
+                // Расположение кнопки
                 DelButton.Location = new Point(Size.Width - DelButton.Size.Width, 0);
                 
-                new List<Control> { Title, Ticket, People }.ForEach(x => x.MaximumSize = new Size(Size.Width - 5, Size.Height));
+                new List<Control> { Title, People }.ForEach(x => x.MaximumSize = new Size(Size.Width - 5, Size.Height));
             }));
         }
         public static Color GetColor() => Color.Yellow;

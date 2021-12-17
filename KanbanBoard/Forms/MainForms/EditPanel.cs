@@ -7,9 +7,9 @@ namespace KanbanBoard.Forms
     public partial class EditPanel : Form
     {
         public new MainChildFormBoards Owner { get; }
-        private readonly TicketPanel _ticket;
+        private readonly Ticket _ticket;
 
-        public EditPanel(MainChildFormBoards owner, TicketPanel ticket)
+        public EditPanel(MainChildFormBoards owner, Ticket ticket)
         {
             InitializeComponent();
 
@@ -29,7 +29,6 @@ namespace KanbanBoard.Forms
         private void TicketsChangeForm_Load(object sender, EventArgs e)
         {
             ChangingTitleTextBox.Text = _ticket.Title.Text;
-            ChangingTicketTextBox.Text = _ticket.Ticket.Text;
             ChangingPeopleTextBox.Text = _ticket.People.Text;
         }
 
@@ -37,7 +36,6 @@ namespace KanbanBoard.Forms
         private void TicketsChangeForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             _ticket.Title.Text = ChangingTitleTextBox.Text;
-            _ticket.Ticket.Text = ChangingTicketTextBox.Text;
             _ticket.People.Text = ChangingPeopleTextBox.Text;
         }
     }

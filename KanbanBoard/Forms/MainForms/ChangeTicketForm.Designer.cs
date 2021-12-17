@@ -1,6 +1,6 @@
 ﻿namespace KanbanBoard.Forms
 {
-    partial class TicketsChangeForm
+    partial class ChangeTicketForm
     {
         /// <summary>
         /// Required designer variable.
