@@ -38,7 +38,7 @@ namespace KanbanBoard.Forms
             if (Board.ColumnStyles.Count > 1 && column == 0)
                 column = Board.ColumnStyles.Count;
             AddTitleToPanel("Название", column);
-            AddControlToPanel("Название", "Участники", column, 1);
+            AddControlToPanel("Название", "", column, 1);
         }
 
         private void AddTitleToPanel(string textOfLabel, int column)
@@ -68,7 +68,7 @@ namespace KanbanBoard.Forms
                 for (var row = 1; row <= Board.RowStyles.Count; row++)
                 {
                     if (!(Board.GetControlFromPosition(column, row) is null)) continue;
-                    AddControlToPanel("Название", "Участники", column, row);
+                    AddControlToPanel("Название", "", column, row);
                     break;
                 }
             };

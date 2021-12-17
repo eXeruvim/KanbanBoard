@@ -152,8 +152,9 @@ namespace KanbanBoard.Forms
 
         private void projects_iconButton_Click(object sender, EventArgs e)
         {
+            OpenChildForm(new MainChildFormBoards());
             ShowSubMenu(submenu_boards);
-            add_iconButton.Visible = false;
+            add_iconButton.Visible = true;
 
 
         }
