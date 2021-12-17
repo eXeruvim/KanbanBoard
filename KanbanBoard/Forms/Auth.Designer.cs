@@ -29,6 +29,7 @@ namespace KanbanBoard.Forms
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Auth));
             this.login = new System.Windows.Forms.Label();
             this.password = new System.Windows.Forms.Label();
             this.password_textbox = new System.Windows.Forms.TextBox();
@@ -43,9 +44,9 @@ namespace KanbanBoard.Forms
             this.login.AutoSize = true;
             this.login.Font = new System.Drawing.Font("Lucida Sans Unicode", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.login.ForeColor = System.Drawing.Color.Yellow;
-            this.login.Location = new System.Drawing.Point(33, 29);
+            this.login.Location = new System.Drawing.Point(29, 22);
             this.login.Name = "login";
-            this.login.Size = new System.Drawing.Size(88, 28);
+            this.login.Size = new System.Drawing.Size(74, 23);
             this.login.TabIndex = 0;
             this.login.Text = "Логин:";
             // 
@@ -54,10 +55,10 @@ namespace KanbanBoard.Forms
             this.password.AutoSize = true;
             this.password.Font = new System.Drawing.Font("Lucida Sans Unicode", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.password.ForeColor = System.Drawing.Color.Yellow;
-            this.password.Location = new System.Drawing.Point(33, 80);
+            this.password.Location = new System.Drawing.Point(29, 60);
             this.password.Name = "password";
             this.password.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.password.Size = new System.Drawing.Size(103, 28);
+            this.password.Size = new System.Drawing.Size(86, 23);
             this.password.TabIndex = 1;
             this.password.Text = "Пароль:";
             // 
@@ -65,10 +66,9 @@ namespace KanbanBoard.Forms
             // 
             this.password_textbox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(21)))), ((int)(((byte)(32)))));
             this.password_textbox.ForeColor = System.Drawing.Color.Yellow;
-            this.password_textbox.Location = new System.Drawing.Point(166, 81);
-            this.password_textbox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.password_textbox.Location = new System.Drawing.Point(145, 61);
             this.password_textbox.Name = "password_textbox";
-            this.password_textbox.Size = new System.Drawing.Size(153, 27);
+            this.password_textbox.Size = new System.Drawing.Size(134, 23);
             this.password_textbox.TabIndex = 3;
             this.password_textbox.UseSystemPasswordChar = true;
             // 
@@ -77,10 +77,9 @@ namespace KanbanBoard.Forms
             this.signin_btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(21)))), ((int)(((byte)(32)))));
             this.signin_btn.Font = new System.Drawing.Font("Lucida Sans Unicode", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.signin_btn.ForeColor = System.Drawing.Color.Yellow;
-            this.signin_btn.Location = new System.Drawing.Point(44, 141);
-            this.signin_btn.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.signin_btn.Location = new System.Drawing.Point(38, 106);
             this.signin_btn.Name = "signin_btn";
-            this.signin_btn.Size = new System.Drawing.Size(130, 40);
+            this.signin_btn.Size = new System.Drawing.Size(114, 30);
             this.signin_btn.TabIndex = 4;
             this.signin_btn.Text = "Войти";
             this.signin_btn.UseVisualStyleBackColor = false;
@@ -91,10 +90,9 @@ namespace KanbanBoard.Forms
             this.signup_btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(21)))), ((int)(((byte)(32)))));
             this.signup_btn.Font = new System.Drawing.Font("Lucida Sans Unicode", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.signup_btn.ForeColor = System.Drawing.Color.Yellow;
-            this.signup_btn.Location = new System.Drawing.Point(209, 141);
-            this.signup_btn.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.signup_btn.Location = new System.Drawing.Point(183, 106);
             this.signup_btn.Name = "signup_btn";
-            this.signup_btn.Size = new System.Drawing.Size(130, 40);
+            this.signup_btn.Size = new System.Drawing.Size(114, 30);
             this.signup_btn.TabIndex = 5;
             this.signup_btn.Text = "Регистрация";
             this.signup_btn.UseVisualStyleBackColor = false;
@@ -104,10 +102,9 @@ namespace KanbanBoard.Forms
             // 
             this.login_textbox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(21)))), ((int)(((byte)(32)))));
             this.login_textbox.ForeColor = System.Drawing.Color.Yellow;
-            this.login_textbox.Location = new System.Drawing.Point(165, 37);
-            this.login_textbox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.login_textbox.Location = new System.Drawing.Point(144, 28);
             this.login_textbox.Name = "login_textbox";
-            this.login_textbox.Size = new System.Drawing.Size(154, 27);
+            this.login_textbox.Size = new System.Drawing.Size(135, 23);
             this.login_textbox.TabIndex = 2;
             // 
             // eye_iconButton
@@ -119,10 +116,9 @@ namespace KanbanBoard.Forms
             this.eye_iconButton.IconColor = System.Drawing.Color.White;
             this.eye_iconButton.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.eye_iconButton.IconSize = 30;
-            this.eye_iconButton.Location = new System.Drawing.Point(328, 80);
-            this.eye_iconButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.eye_iconButton.Location = new System.Drawing.Point(287, 60);
             this.eye_iconButton.Name = "eye_iconButton";
-            this.eye_iconButton.Size = new System.Drawing.Size(34, 33);
+            this.eye_iconButton.Size = new System.Drawing.Size(30, 25);
             this.eye_iconButton.TabIndex = 7;
             this.eye_iconButton.UseVisualStyleBackColor = false;
             this.eye_iconButton.MouseDown += new System.Windows.Forms.MouseEventHandler(this.eye_iconButton_MouseDown);
@@ -131,10 +127,10 @@ namespace KanbanBoard.Forms
             // Auth
             // 
             this.AcceptButton = this.signin_btn;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
-            this.ClientSize = new System.Drawing.Size(382, 208);
+            this.ClientSize = new System.Drawing.Size(334, 156);
             this.Controls.Add(this.eye_iconButton);
             this.Controls.Add(this.signup_btn);
             this.Controls.Add(this.signin_btn);
@@ -143,7 +139,7 @@ namespace KanbanBoard.Forms
             this.Controls.Add(this.password);
             this.Controls.Add(this.login);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "Auth";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

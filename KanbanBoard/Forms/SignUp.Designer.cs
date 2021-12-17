@@ -29,6 +29,7 @@ namespace KanbanBoard.Forms
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SignUp));
             this.login = new System.Windows.Forms.Label();
             this.email = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -53,7 +54,7 @@ namespace KanbanBoard.Forms
             this.login.ForeColor = System.Drawing.Color.Yellow;
             this.login.Location = new System.Drawing.Point(28, 72);
             this.login.Name = "login";
-            this.login.Size = new System.Drawing.Size(78, 23);
+            this.login.Size = new System.Drawing.Size(63, 20);
             this.login.TabIndex = 0;
             this.login.Text = "Логин:";
             // 
@@ -64,7 +65,7 @@ namespace KanbanBoard.Forms
             this.email.ForeColor = System.Drawing.Color.Yellow;
             this.email.Location = new System.Drawing.Point(28, 118);
             this.email.Name = "email";
-            this.email.Size = new System.Drawing.Size(81, 23);
+            this.email.Size = new System.Drawing.Size(66, 20);
             this.email.TabIndex = 1;
             this.email.Text = "E-mail:";
             // 
@@ -75,7 +76,7 @@ namespace KanbanBoard.Forms
             this.label1.ForeColor = System.Drawing.Color.Yellow;
             this.label1.Location = new System.Drawing.Point(28, 167);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(89, 23);
+            this.label1.Size = new System.Drawing.Size(72, 20);
             this.label1.TabIndex = 2;
             this.label1.Text = "Пароль:";
             // 
@@ -86,7 +87,7 @@ namespace KanbanBoard.Forms
             this.name.ForeColor = System.Drawing.Color.Yellow;
             this.name.Location = new System.Drawing.Point(28, 31);
             this.name.Name = "name";
-            this.name.Size = new System.Drawing.Size(56, 23);
+            this.name.Size = new System.Drawing.Size(46, 20);
             this.name.TabIndex = 3;
             this.name.Text = "Имя:";
             // 
@@ -97,7 +98,7 @@ namespace KanbanBoard.Forms
             this.name_textBox.ForeColor = System.Drawing.Color.Yellow;
             this.name_textBox.Location = new System.Drawing.Point(150, 31);
             this.name_textBox.Name = "name_textBox";
-            this.name_textBox.Size = new System.Drawing.Size(277, 27);
+            this.name_textBox.Size = new System.Drawing.Size(277, 23);
             this.name_textBox.TabIndex = 4;
             // 
             // login_textBox
@@ -107,7 +108,7 @@ namespace KanbanBoard.Forms
             this.login_textBox.ForeColor = System.Drawing.Color.Yellow;
             this.login_textBox.Location = new System.Drawing.Point(150, 77);
             this.login_textBox.Name = "login_textBox";
-            this.login_textBox.Size = new System.Drawing.Size(277, 27);
+            this.login_textBox.Size = new System.Drawing.Size(277, 23);
             this.login_textBox.TabIndex = 5;
             // 
             // email_textBox
@@ -117,7 +118,7 @@ namespace KanbanBoard.Forms
             this.email_textBox.ForeColor = System.Drawing.Color.Yellow;
             this.email_textBox.Location = new System.Drawing.Point(150, 123);
             this.email_textBox.Name = "email_textBox";
-            this.email_textBox.Size = new System.Drawing.Size(277, 27);
+            this.email_textBox.Size = new System.Drawing.Size(277, 23);
             this.email_textBox.TabIndex = 6;
             // 
             // pass_textBox
@@ -127,7 +128,7 @@ namespace KanbanBoard.Forms
             this.pass_textBox.ForeColor = System.Drawing.Color.Yellow;
             this.pass_textBox.Location = new System.Drawing.Point(150, 169);
             this.pass_textBox.Name = "pass_textBox";
-            this.pass_textBox.Size = new System.Drawing.Size(277, 27);
+            this.pass_textBox.Size = new System.Drawing.Size(277, 23);
             this.pass_textBox.TabIndex = 7;
             this.pass_textBox.UseSystemPasswordChar = true;
             // 
@@ -172,7 +173,7 @@ namespace KanbanBoard.Forms
             this.captcha_textBox.ForeColor = System.Drawing.Color.Yellow;
             this.captcha_textBox.Location = new System.Drawing.Point(264, 252);
             this.captcha_textBox.Name = "captcha_textBox";
-            this.captcha_textBox.Size = new System.Drawing.Size(163, 31);
+            this.captcha_textBox.Size = new System.Drawing.Size(163, 26);
             this.captcha_textBox.TabIndex = 11;
             // 
             // reload_iconButton
@@ -200,13 +201,13 @@ namespace KanbanBoard.Forms
             this.label2.ForeColor = System.Drawing.Color.Yellow;
             this.label2.Location = new System.Drawing.Point(28, 216);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(272, 23);
+            this.label2.Size = new System.Drawing.Size(221, 20);
             this.label2.TabIndex = 13;
             this.label2.Text = "Введите текст с картинки:";
             // 
             // SignUp
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
             this.ClientSize = new System.Drawing.Size(463, 429);
@@ -226,6 +227,7 @@ namespace KanbanBoard.Forms
             this.Controls.Add(this.login);
             this.Font = new System.Drawing.Font("Lucida Sans Unicode", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "SignUp";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;

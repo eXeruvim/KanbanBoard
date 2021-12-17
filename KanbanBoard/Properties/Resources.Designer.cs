@@ -31,9 +31,7 @@ namespace KanbanBoard.Properties {
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
         internal Resources() {
         }
-
-        public static object Volny_na_vode { get; internal set; }
-
+        
         /// <summary>
         ///   Возвращает кэшированный экземпляр ResourceManager, использованный этим классом.
         /// </summary>
@@ -59,6 +57,16 @@ namespace KanbanBoard.Properties {
             }
             set {
                 resourceCulture = value;
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Icon, аналогичного (Значок).
+        /// </summary>
+        internal static System.Drawing.Icon crutches {
+            get {
+                object obj = ResourceManager.GetObject("crutches", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
             }
         }
     }
