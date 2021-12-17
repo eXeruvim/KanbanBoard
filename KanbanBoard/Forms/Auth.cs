@@ -5,7 +5,9 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
-
+using Newtonsoft.Json;
+using System.Text.Json.Serialization;
+using System.Linq;
 namespace KanbanBoard.Forms
 {
     public partial class Auth : Form
@@ -17,6 +19,7 @@ namespace KanbanBoard.Forms
             BasePath = "https://kanbanboard-c892f-default-rtdb.europe-west1.firebasedatabase.app/"
         };
         IFirebaseClient client;
+        public static string mail, usname, log;
 
         public Auth()
         {
@@ -48,12 +51,16 @@ namespace KanbanBoard.Forms
             {
                 login = login_textbox.Text,
                 password = Encrypting.sha256(password_textbox.Text)
-            };
+        };
 
                     
             if (Data.isEquals(result, current_data))
-            {
+            {  
                 MainForm main = new MainForm();
+                FirebaseResponse res = await client.GetAsync(@"Users/" + login_textbox.Text);
+                Dictionary<string, string> data = JsonConvert.DeserializeObject<Dictionary<string, string>>(res.Body.ToString());
+                getData(data);
+                
                 this.Hide();
                 signin_btn.Enabled = true;
                 main.ShowDialog();
@@ -87,6 +94,15 @@ namespace KanbanBoard.Forms
         {
             eye_iconButton.IconChar = FontAwesome.Sharp.IconChar.EyeSlash;
             password_textbox.UseSystemPasswordChar = true;
+        }
+
+
+        private void getData(Dictionary<string, string> record)
+        {
+            mail = record.ElementAt(0).Value;
+            log = record.ElementAt(1).Value;
+            usname = record.ElementAt(2).Value;
+
         }
     }
 }

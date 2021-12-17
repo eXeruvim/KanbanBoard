@@ -32,8 +32,14 @@ namespace KanbanBoard.Forms
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.menu_panel = new System.Windows.Forms.Panel();
             this.settings_iconButton = new FontAwesome.Sharp.IconButton();
-            this.profile_iconButton = new FontAwesome.Sharp.IconButton();
             this.chat_iconButton = new FontAwesome.Sharp.IconButton();
+            this.submenu_boards = new System.Windows.Forms.Panel();
+            this.iconButton4 = new FontAwesome.Sharp.IconButton();
+            this.iconButton3 = new FontAwesome.Sharp.IconButton();
+            this.submenu_profile = new System.Windows.Forms.Panel();
+            this.logout_btn = new FontAwesome.Sharp.IconButton();
+            this.iconButton1 = new FontAwesome.Sharp.IconButton();
+            this.profile_iconButton = new FontAwesome.Sharp.IconButton();
             this.projects_iconButton = new FontAwesome.Sharp.IconButton();
             this.panel4 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
@@ -45,6 +51,8 @@ namespace KanbanBoard.Forms
             this.panel_childForm = new System.Windows.Forms.Panel();
             this.add_iconButton = new FontAwesome.Sharp.IconButton();
             this.menu_panel.SuspendLayout();
+            this.submenu_boards.SuspendLayout();
+            this.submenu_profile.SuspendLayout();
             this.panel4.SuspendLayout();
             this.upper_panel.SuspendLayout();
             this.panel_childForm.SuspendLayout();
@@ -54,8 +62,10 @@ namespace KanbanBoard.Forms
             // 
             this.menu_panel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(21)))), ((int)(((byte)(32)))));
             this.menu_panel.Controls.Add(this.settings_iconButton);
-            this.menu_panel.Controls.Add(this.profile_iconButton);
             this.menu_panel.Controls.Add(this.chat_iconButton);
+            this.menu_panel.Controls.Add(this.submenu_boards);
+            this.menu_panel.Controls.Add(this.submenu_profile);
+            this.menu_panel.Controls.Add(this.profile_iconButton);
             this.menu_panel.Controls.Add(this.projects_iconButton);
             this.menu_panel.Controls.Add(this.panel4);
             this.menu_panel.Dock = System.Windows.Forms.DockStyle.Left;
@@ -77,37 +87,15 @@ namespace KanbanBoard.Forms
             this.settings_iconButton.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.settings_iconButton.IconSize = 45;
             this.settings_iconButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.settings_iconButton.Location = new System.Drawing.Point(0, 232);
+            this.settings_iconButton.Location = new System.Drawing.Point(0, 269);
             this.settings_iconButton.Name = "settings_iconButton";
-            this.settings_iconButton.Size = new System.Drawing.Size(157, 75);
-            this.settings_iconButton.TabIndex = 7;
+            this.settings_iconButton.Size = new System.Drawing.Size(157, 56);
+            this.settings_iconButton.TabIndex = 14;
             this.settings_iconButton.Tag = "Настройки";
             this.settings_iconButton.Text = "Настройки";
             this.settings_iconButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.settings_iconButton.UseVisualStyleBackColor = true;
             this.settings_iconButton.Click += new System.EventHandler(this.settings_iconButton_Click);
-            // 
-            // profile_iconButton
-            // 
-            this.profile_iconButton.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.profile_iconButton.FlatAppearance.BorderSize = 0;
-            this.profile_iconButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.profile_iconButton.Font = new System.Drawing.Font("Lucida Sans Unicode", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.profile_iconButton.ForeColor = System.Drawing.Color.Yellow;
-            this.profile_iconButton.IconChar = FontAwesome.Sharp.IconChar.User;
-            this.profile_iconButton.IconColor = System.Drawing.Color.Yellow;
-            this.profile_iconButton.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.profile_iconButton.IconSize = 40;
-            this.profile_iconButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.profile_iconButton.Location = new System.Drawing.Point(0, 419);
-            this.profile_iconButton.Name = "profile_iconButton";
-            this.profile_iconButton.Size = new System.Drawing.Size(157, 75);
-            this.profile_iconButton.TabIndex = 6;
-            this.profile_iconButton.Tag = "Профиль";
-            this.profile_iconButton.Text = "Профиль";
-            this.profile_iconButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.profile_iconButton.UseVisualStyleBackColor = true;
-            this.profile_iconButton.Click += new System.EventHandler(this.profile_iconButton_Click);
             // 
             // chat_iconButton
             // 
@@ -121,15 +109,154 @@ namespace KanbanBoard.Forms
             this.chat_iconButton.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.chat_iconButton.IconSize = 45;
             this.chat_iconButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.chat_iconButton.Location = new System.Drawing.Point(0, 157);
+            this.chat_iconButton.Location = new System.Drawing.Point(0, 213);
             this.chat_iconButton.Name = "chat_iconButton";
-            this.chat_iconButton.Size = new System.Drawing.Size(157, 75);
-            this.chat_iconButton.TabIndex = 5;
+            this.chat_iconButton.Size = new System.Drawing.Size(157, 56);
+            this.chat_iconButton.TabIndex = 13;
             this.chat_iconButton.Tag = "Чат";
             this.chat_iconButton.Text = "Чат";
             this.chat_iconButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.chat_iconButton.UseVisualStyleBackColor = true;
-            this.chat_iconButton.Click += new System.EventHandler(this.chat_iconButton_Click);
+            // 
+            // submenu_boards
+            // 
+            this.submenu_boards.Controls.Add(this.iconButton4);
+            this.submenu_boards.Controls.Add(this.iconButton3);
+            this.submenu_boards.Dock = System.Windows.Forms.DockStyle.Top;
+            this.submenu_boards.Location = new System.Drawing.Point(0, 138);
+            this.submenu_boards.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.submenu_boards.Name = "submenu_boards";
+            this.submenu_boards.Size = new System.Drawing.Size(157, 75);
+            this.submenu_boards.TabIndex = 11;
+            // 
+            // iconButton4
+            // 
+            this.iconButton4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(21)))), ((int)(((byte)(32)))));
+            this.iconButton4.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.iconButton4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.iconButton4.Font = new System.Drawing.Font("Lucida Sans Unicode", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.iconButton4.ForeColor = System.Drawing.Color.Yellow;
+            this.iconButton4.IconChar = FontAwesome.Sharp.IconChar.ChalkboardTeacher;
+            this.iconButton4.IconColor = System.Drawing.Color.Yellow;
+            this.iconButton4.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconButton4.IconSize = 33;
+            this.iconButton4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.iconButton4.Location = new System.Drawing.Point(0, 37);
+            this.iconButton4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.iconButton4.Name = "iconButton4";
+            this.iconButton4.Size = new System.Drawing.Size(157, 38);
+            this.iconButton4.TabIndex = 10;
+            this.iconButton4.Tag = "Присоединиться к доске";
+            this.iconButton4.Text = "Присоединиться к доске";
+            this.iconButton4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.iconButton4.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.iconButton4.UseVisualStyleBackColor = false;
+            this.iconButton4.Click += new System.EventHandler(this.iconButton4_Click);
+            // 
+            // iconButton3
+            // 
+            this.iconButton3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(21)))), ((int)(((byte)(32)))));
+            this.iconButton3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.iconButton3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.iconButton3.Font = new System.Drawing.Font("Lucida Sans Unicode", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.iconButton3.ForeColor = System.Drawing.Color.Yellow;
+            this.iconButton3.IconChar = FontAwesome.Sharp.IconChar.ClipboardCheck;
+            this.iconButton3.IconColor = System.Drawing.Color.Yellow;
+            this.iconButton3.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconButton3.IconSize = 33;
+            this.iconButton3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.iconButton3.Location = new System.Drawing.Point(0, 0);
+            this.iconButton3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.iconButton3.Name = "iconButton3";
+            this.iconButton3.Size = new System.Drawing.Size(157, 38);
+            this.iconButton3.TabIndex = 9;
+            this.iconButton3.Tag = "Ваши доски";
+            this.iconButton3.Text = "Ваши доски";
+            this.iconButton3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.iconButton3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.iconButton3.UseVisualStyleBackColor = false;
+            this.iconButton3.Click += new System.EventHandler(this.iconButton3_Click);
+            // 
+            // submenu_profile
+            // 
+            this.submenu_profile.Controls.Add(this.logout_btn);
+            this.submenu_profile.Controls.Add(this.iconButton1);
+            this.submenu_profile.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.submenu_profile.Location = new System.Drawing.Point(0, 359);
+            this.submenu_profile.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.submenu_profile.Name = "submenu_profile";
+            this.submenu_profile.Size = new System.Drawing.Size(157, 75);
+            this.submenu_profile.TabIndex = 10;
+            // 
+            // logout_btn
+            // 
+            this.logout_btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(21)))), ((int)(((byte)(32)))));
+            this.logout_btn.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.logout_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.logout_btn.Font = new System.Drawing.Font("Lucida Sans Unicode", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.logout_btn.ForeColor = System.Drawing.Color.Yellow;
+            this.logout_btn.IconChar = FontAwesome.Sharp.IconChar.SignOutAlt;
+            this.logout_btn.IconColor = System.Drawing.Color.Yellow;
+            this.logout_btn.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.logout_btn.IconSize = 33;
+            this.logout_btn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.logout_btn.Location = new System.Drawing.Point(0, 37);
+            this.logout_btn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.logout_btn.Name = "logout_btn";
+            this.logout_btn.Size = new System.Drawing.Size(157, 38);
+            this.logout_btn.TabIndex = 9;
+            this.logout_btn.Tag = "Выйти из аккаунта";
+            this.logout_btn.Text = "Выйти из аккаунта";
+            this.logout_btn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.logout_btn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.logout_btn.UseVisualStyleBackColor = false;
+            this.logout_btn.Click += new System.EventHandler(this.logout_btn_Click);
+            // 
+            // iconButton1
+            // 
+            this.iconButton1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(21)))), ((int)(((byte)(32)))));
+            this.iconButton1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.iconButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.iconButton1.Font = new System.Drawing.Font("Lucida Sans Unicode", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.iconButton1.ForeColor = System.Drawing.Color.Yellow;
+            this.iconButton1.IconChar = FontAwesome.Sharp.IconChar.UserCog;
+            this.iconButton1.IconColor = System.Drawing.Color.Yellow;
+            this.iconButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconButton1.IconSize = 33;
+            this.iconButton1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.iconButton1.Location = new System.Drawing.Point(0, 0);
+            this.iconButton1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.iconButton1.Name = "iconButton1";
+            this.iconButton1.Size = new System.Drawing.Size(157, 38);
+            this.iconButton1.TabIndex = 8;
+            this.iconButton1.Tag = "Настройки аккаунта";
+            this.iconButton1.Text = "Настройки аккаунта";
+            this.iconButton1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.iconButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.iconButton1.UseVisualStyleBackColor = false;
+            this.iconButton1.Click += new System.EventHandler(this.iconButton1_Click);
+            // 
+            // profile_iconButton
+            // 
+            this.profile_iconButton.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.profile_iconButton.FlatAppearance.BorderSize = 0;
+            this.profile_iconButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.profile_iconButton.Font = new System.Drawing.Font("Lucida Sans Unicode", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.profile_iconButton.ForeColor = System.Drawing.Color.Yellow;
+            this.profile_iconButton.IconChar = FontAwesome.Sharp.IconChar.User;
+            this.profile_iconButton.IconColor = System.Drawing.Color.Yellow;
+            this.profile_iconButton.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.profile_iconButton.IconSize = 35;
+            this.profile_iconButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.profile_iconButton.Location = new System.Drawing.Point(0, 434);
+            this.profile_iconButton.Name = "profile_iconButton";
+            this.profile_iconButton.Size = new System.Drawing.Size(157, 60);
+            this.profile_iconButton.TabIndex = 6;
+            this.profile_iconButton.Tag = "Профиль";
+            this.profile_iconButton.Text = "Профиль";
+            this.profile_iconButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.profile_iconButton.UseVisualStyleBackColor = true;
+            this.profile_iconButton.Click += new System.EventHandler(this.profile_iconButton_Click);
             // 
             // projects_iconButton
             // 
@@ -145,9 +272,9 @@ namespace KanbanBoard.Forms
             this.projects_iconButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.projects_iconButton.Location = new System.Drawing.Point(0, 82);
             this.projects_iconButton.Name = "projects_iconButton";
-            this.projects_iconButton.Size = new System.Drawing.Size(157, 75);
+            this.projects_iconButton.Size = new System.Drawing.Size(157, 56);
             this.projects_iconButton.TabIndex = 4;
-            this.projects_iconButton.Tag = "Доска";
+            this.projects_iconButton.Tag = "Доски";
             this.projects_iconButton.Text = "Доски";
             this.projects_iconButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.projects_iconButton.UseVisualStyleBackColor = true;
@@ -220,7 +347,7 @@ namespace KanbanBoard.Forms
             this.restore_iconButton.IconColor = System.Drawing.Color.White;
             this.restore_iconButton.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.restore_iconButton.IconSize = 20;
-            this.restore_iconButton.Location = new System.Drawing.Point(680, 0);
+            this.restore_iconButton.Location = new System.Drawing.Point(681, 0);
             this.restore_iconButton.Name = "restore_iconButton";
             this.restore_iconButton.Size = new System.Drawing.Size(31, 25);
             this.restore_iconButton.TabIndex = 4;
@@ -238,7 +365,7 @@ namespace KanbanBoard.Forms
             this.minimize_iconButton.IconColor = System.Drawing.Color.White;
             this.minimize_iconButton.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.minimize_iconButton.IconSize = 20;
-            this.minimize_iconButton.Location = new System.Drawing.Point(648, 0);
+            this.minimize_iconButton.Location = new System.Drawing.Point(650, 0);
             this.minimize_iconButton.Name = "minimize_iconButton";
             this.minimize_iconButton.Size = new System.Drawing.Size(31, 25);
             this.minimize_iconButton.TabIndex = 3;
@@ -256,7 +383,7 @@ namespace KanbanBoard.Forms
             this.exit_iconButton.IconColor = System.Drawing.Color.White;
             this.exit_iconButton.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.exit_iconButton.IconSize = 20;
-            this.exit_iconButton.Location = new System.Drawing.Point(713, 0);
+            this.exit_iconButton.Location = new System.Drawing.Point(711, 0);
             this.exit_iconButton.Name = "exit_iconButton";
             this.exit_iconButton.Size = new System.Drawing.Size(31, 25);
             this.exit_iconButton.TabIndex = 2;
@@ -282,7 +409,7 @@ namespace KanbanBoard.Forms
             this.add_iconButton.FlatAppearance.BorderSize = 0;
             this.add_iconButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.add_iconButton.Font = new System.Drawing.Font("Lucida Sans Unicode", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.add_iconButton.ForeColor = System.Drawing.Color.Transparent;
+            this.add_iconButton.ForeColor = System.Drawing.Color.Yellow;
             this.add_iconButton.IconChar = FontAwesome.Sharp.IconChar.PlusCircle;
             this.add_iconButton.IconColor = System.Drawing.Color.Yellow;
             this.add_iconButton.IconFont = FontAwesome.Sharp.IconFont.Auto;
@@ -313,6 +440,8 @@ namespace KanbanBoard.Forms
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainForm_FormClosed);
             this.Resize += new System.EventHandler(this.MainForm_Resize);
             this.menu_panel.ResumeLayout(false);
+            this.submenu_boards.ResumeLayout(false);
+            this.submenu_profile.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.upper_panel.ResumeLayout(false);
             this.panel_childForm.ResumeLayout(false);
@@ -331,10 +460,16 @@ namespace KanbanBoard.Forms
         private FontAwesome.Sharp.IconButton minimize_iconButton;
         private FontAwesome.Sharp.IconButton exit_iconButton;
         private FontAwesome.Sharp.IconButton profile_iconButton;
-        private FontAwesome.Sharp.IconButton chat_iconButton;
-        private FontAwesome.Sharp.IconButton settings_iconButton;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Label label1;
         private FontAwesome.Sharp.IconButton add_iconButton;
+        private FontAwesome.Sharp.IconButton logout_btn;
+        private FontAwesome.Sharp.IconButton iconButton1;
+        private System.Windows.Forms.Panel submenu_profile;
+        private FontAwesome.Sharp.IconButton settings_iconButton;
+        private FontAwesome.Sharp.IconButton chat_iconButton;
+        private System.Windows.Forms.Panel submenu_boards;
+        private FontAwesome.Sharp.IconButton iconButton4;
+        private FontAwesome.Sharp.IconButton iconButton3;
     }
 }
