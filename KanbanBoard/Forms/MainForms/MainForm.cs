@@ -232,7 +232,7 @@ namespace KanbanBoard.Forms
 
         private void logout_btn_Click(object sender, EventArgs e)
         {
-            Form auth = Application.OpenForms[0];
+            Auth auth = new Auth();
             this.Hide();
             auth.ShowDialog();
         }
