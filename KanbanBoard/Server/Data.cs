@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace KanbanBoard
+namespace KanbanBoard.Server
 {
     class Data
     {
@@ -12,6 +12,7 @@ namespace KanbanBoard
         public string login { get; set; }
         public string email { get; set; }
         public string password { get; set; }
+        public string project { get; set; }
 
         private static string error = "Неправильный логин";
 

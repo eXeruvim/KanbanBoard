@@ -8,10 +8,15 @@ using System.Windows.Forms;
 using Newtonsoft.Json;
 using System.Text.Json.Serialization;
 using System.Linq;
+using KanbanBoard.Server;
+
 namespace KanbanBoard.Forms
 {
     public partial class Auth : Form
     {
+        public static string mail { get; set; }
+        public static string user { get; set; }
+        public static string log { get; set; }
 
         IFirebaseConfig config = new FirebaseConfig
         {
@@ -19,7 +24,6 @@ namespace KanbanBoard.Forms
             BasePath = "https://kanbanboard-c892f-default-rtdb.europe-west1.firebasedatabase.app/"
         };
         IFirebaseClient client;
-        public static string mail, usname, log;
 
         public Auth()
         {
@@ -51,18 +55,19 @@ namespace KanbanBoard.Forms
             {
                 login = login_textbox.Text,
                 password = Encrypting.sha256(password_textbox.Text)
-        };
+            };
 
                     
             if (Data.isEquals(result, current_data))
             {  
-                MainForm main = new MainForm();
-                FirebaseResponse res = await client.GetAsync(@"Users/" + login_textbox.Text);
-                Dictionary<string, string> data = JsonConvert.DeserializeObject<Dictionary<string, string>>(res.Body.ToString());
-                getData(data);
-                
+                Data data = response.ResultAs<Data>();
+                mail = data.email;
+                user = data.name;
+                log = data.login;
+
                 this.Hide();
                 signin_btn.Enabled = true;
+                MainForm main = new MainForm();
                 main.ShowDialog();
             }
 
@@ -94,15 +99,6 @@ namespace KanbanBoard.Forms
         {
             eye_iconButton.IconChar = FontAwesome.Sharp.IconChar.EyeSlash;
             password_textbox.UseSystemPasswordChar = true;
-        }
-
-
-        private void getData(Dictionary<string, string> record)
-        {
-            mail = record.ElementAt(0).Value;
-            log = record.ElementAt(1).Value;
-            usname = record.ElementAt(2).Value;
-
         }
     }
 }

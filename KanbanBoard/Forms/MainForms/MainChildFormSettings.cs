@@ -1,6 +1,8 @@
-﻿using System;
+﻿using FireSharp.Response;
+using System;
 using System.Diagnostics;
 using System.Windows.Forms;
+using KanbanBoard.Server;
 
 namespace KanbanBoard.Forms
 {
@@ -9,6 +11,9 @@ namespace KanbanBoard.Forms
         public MainChildFormSettings()
         {
             InitializeComponent();
+            label8.Text = Auth.mail;
+            label7.Text = Auth.user;
+            label9.Text = Auth.log;
         }
 
         private void github_iconButton_Click(object sender, EventArgs e)

@@ -4,6 +4,7 @@ using System.Windows.Forms;
 using FireSharp.Config;
 using FireSharp.Interfaces;
 using FireSharp.Response;
+using KanbanBoard.Server;
 
 namespace KanbanBoard.Forms
 {

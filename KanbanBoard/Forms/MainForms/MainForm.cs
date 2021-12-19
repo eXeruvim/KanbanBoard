@@ -30,10 +30,6 @@ namespace KanbanBoard.Forms
         [DllImport("user32.DLL", EntryPoint = "SendMessage")]
         private extern static void SendMessage(IntPtr hWnd, int wMsg, int wParam, int lParam);
 
-        
-
-
-
         private void upper_panel_MouseDown(object sender, MouseEventArgs e)
         {
             ReleaseCapture();
@@ -240,7 +236,8 @@ namespace KanbanBoard.Forms
 
         private void iconButton3_Click(object sender, EventArgs e)
         {
-            add_iconButton.Visible = true;
+            add_iconButton.Visible = false;
+            OpenChildForm(new MainChildFormHistory());
         }
 
         private void iconButton4_Click(object sender, EventArgs e)

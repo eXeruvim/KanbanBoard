@@ -29,6 +29,7 @@ namespace KanbanBoard.Forms
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainChildFormBoards));
             this.Board = new System.Windows.Forms.TableLayoutPanel();
             this.SuspendLayout();
             // 
@@ -60,6 +61,7 @@ namespace KanbanBoard.Forms
             this.ClientSize = new System.Drawing.Size(753, 453);
             this.Controls.Add(this.Board);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "MainChildFormBoards";
             this.Text = "MainChildForm1";
