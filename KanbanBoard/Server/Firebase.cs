@@ -22,6 +22,12 @@ namespace KanbanBoard.Server
             сlient = new FirebaseClient(new FirebaseConfig() { AuthSecret = AuthSecret, BasePath = BasePath });
         }
 
-
+        public static void Save(Dictionary<string, Dictionary<string, List<Dictionary<string, string>>>> dataDictionary)
+        {
+            foreach (var project in dataDictionary)
+            {
+                сlient.Set($"Projects/{project.Key}/BoardInfo", project.Value);
+            }
+        }
     }
 }

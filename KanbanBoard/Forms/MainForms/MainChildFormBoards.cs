@@ -1,4 +1,5 @@
-﻿using KanbanBoard.Utils;
+﻿using KanbanBoard.Server;
+using KanbanBoard.Utils;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -111,6 +112,7 @@ namespace KanbanBoard.Forms
                 if (!Application.OpenForms.OfType<ChangePanelNameForm>().Any())
                     new ChangePanelNameForm(this, titlePanel).Show();
             };
+            SaveIn("73c8a07082590505395c559ab5ad951bc6c73ad693d15c9ee91aa28ec6c8711f"); // для теста
         }
 
 
@@ -118,7 +120,6 @@ namespace KanbanBoard.Forms
         {
             control.Name = $"ticket{column}{row}";
 
-            // Нужно ли добавлять доп. строки и/или столбцы
             if (Board.RowStyles.Count <= row)
             {
                 Board.RowCount++;
@@ -143,7 +144,7 @@ namespace KanbanBoard.Forms
             var control = new Ticket();
             control.Title.Text = title;
             control.People.Text = people;
-            SetEventsOnTicket(control);
+            SetEvents(control);
 
             control.Name = $"ticket{column}{row}";
 
@@ -200,6 +201,7 @@ namespace KanbanBoard.Forms
                 {
                     if (Board.GetCellPosition(x).Row != 0) x.Height = Board.Height / Board.RowCount;
                 });
+                SaveIn("73c8a07082590505395c559ab5ad951bc6c73ad693d15c9ee91aa28ec6c8711f"); // для теста
             }
             catch (Exception e) { }
         }
@@ -210,7 +212,7 @@ namespace KanbanBoard.Forms
         }
 
         // События на кнопки
-        private void SetEventsOnTicket(Ticket ticketPanel)
+        private void SetEvents(Ticket ticketPanel)
         {
             
             // Вызов редактирования 
@@ -289,6 +291,35 @@ namespace KanbanBoard.Forms
                 y += this.Board.GetRowHeights()[rowInd];
             }
             this.Board.Controls.Add(ticketpanel, columnInd, rowInd);
+        }
+
+
+        private void SaveIn(string project)
+        {
+            if (Board.Controls.Count == 0) return;
+            var allData = new Dictionary<string, Dictionary<string, List<Dictionary<string, string>>>>();
+            var projectName = project;
+            var columnDate = new Dictionary<string, List<Dictionary<string, string>>>();
+            for (var column = 0; column < Board.ColumnStyles.Count; column++)
+            {
+                var ticket = new List<Dictionary<string, string>>();
+
+                for (var row = 1; row < Board.RowStyles.Count; row++)
+                {
+                    if (Board.GetControlFromPosition(column, row) != null)
+                        ticket.Add(new Dictionary<string, string>()
+                        {
+                            {"Title", ((Ticket)Board.GetControlFromPosition(column, row)).Title.Text},
+                            {"People", ((Ticket)Board.GetControlFromPosition(column, row)).People.Text}
+                        });
+                }
+
+                if ((Panels)Board.GetControlFromPosition(column, 0) != null)
+                    columnDate.Add($"{column + 1}-" + ((Panels)Board.GetControlFromPosition(column, 0)).TitleColumnLabel.Text, ticket);
+            }
+            allData.Add(projectName, columnDate);
+            // Сохранение в Firebase
+            Firebase.Save(allData);
         }
     }
 }

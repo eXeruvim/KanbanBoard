@@ -5,6 +5,7 @@ using System;
 using System.Windows.Forms;
 using KanbanBoard.Server;
 using KanbanBoard.Forms;
+using System.Collections.Generic;
 
 namespace KanbanBoard.Forms
 {
@@ -20,8 +21,9 @@ namespace KanbanBoard.Forms
         {
             try
             {
-                FirebaseResponse res = Firebase.сlient.Get($"Users/{login}/userProjects");
+                FirebaseResponse res = Firebase.сlient.Get($"Users/{login}/userProject/");
                 Data result = res.ResultAs<Data>();
+                linkLabel1.Text = result.project;
             }
             catch(Exception e)
             {
@@ -33,6 +35,11 @@ namespace KanbanBoard.Forms
         {
             CreationForm creationForm = new CreationForm();
             creationForm.ShowDialog();
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+
         }
     }
 }
