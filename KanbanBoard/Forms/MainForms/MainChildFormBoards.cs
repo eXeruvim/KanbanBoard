@@ -15,6 +15,9 @@ namespace KanbanBoard.Forms
             InitializeComponent();
             SetDoubleBuffered(Board);
             Program.mainChildFormBoards = this;
+
+            label1.Text = OurBoards.choice;
+
             Board.ColumnStyles.Clear();
             Board.RowStyles.Clear();
             Board.ColumnCount = 1;

@@ -100,5 +100,8 @@ namespace KanbanBoard.Forms
             eye_iconButton.IconChar = FontAwesome.Sharp.IconChar.EyeSlash;
             password_textbox.UseSystemPasswordChar = true;
         }
+
+
+     
     }
 }

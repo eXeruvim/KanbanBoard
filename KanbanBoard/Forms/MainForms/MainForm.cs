@@ -7,7 +7,6 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using KanbanBoard.Utils;
-
 namespace KanbanBoard.Forms
 {
     public partial class MainForm : Form
@@ -237,12 +236,21 @@ namespace KanbanBoard.Forms
         private void iconButton3_Click(object sender, EventArgs e)
         {
             add_iconButton.Visible = false;
-            OpenChildForm(new MainChildFormHistory());
+            OpenChildForm(new OurBoards());
         }
 
         private void iconButton4_Click(object sender, EventArgs e)
         {
             add_iconButton.Visible = true;
+            ConnectBoardDialog condialog = new ConnectBoardDialog();
+            condialog.ShowDialog();
+
         }
+
+        private void chat_iconButton_Click_1(object sender, EventArgs e)
+        {
+            OpenChildForm(new MainChildFormBoards());
+        }
+
     }
 }
