@@ -150,8 +150,6 @@ namespace KanbanBoard.Forms
             OpenChildForm(new MainChildFormBoards());
             ShowSubMenu(submenu_boards);
             add_iconButton.Visible = true;
-
-
         }
 
         private void chat_iconButton_Click(object sender, EventArgs e)
@@ -176,7 +174,6 @@ namespace KanbanBoard.Forms
         {
             Program.mainChildFormBoards.AddPanel();
         }
-
 
         public static void SetDoubleBuffered(Control c)
         {

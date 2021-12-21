@@ -10,13 +10,14 @@ namespace KanbanBoard.Forms
 {
     public partial class MainChildFormBoards : Form
     {
+        public static string key { get; set; }
+
         public MainChildFormBoards()
         {
             InitializeComponent();
             SetDoubleBuffered(Board);
             Program.mainChildFormBoards = this;
-
-            label1.Text = OurBoards.choice;
+            //MessageBox.Show(key);
 
             Board.ColumnStyles.Clear();
             Board.RowStyles.Clear();
@@ -115,7 +116,7 @@ namespace KanbanBoard.Forms
                 if (!Application.OpenForms.OfType<ChangePanelNameForm>().Any())
                     new ChangePanelNameForm(this, titlePanel).Show();
             };
-            SaveIn("73c8a07082590505395c559ab5ad951bc6c73ad693d15c9ee91aa28ec6c8711f"); // для теста
+            SaveIn(key); // для теста
         }
 
 
@@ -204,7 +205,7 @@ namespace KanbanBoard.Forms
                 {
                     if (Board.GetCellPosition(x).Row != 0) x.Height = Board.Height / Board.RowCount;
                 });
-                SaveIn("73c8a07082590505395c559ab5ad951bc6c73ad693d15c9ee91aa28ec6c8711f"); // для теста
+                SaveIn(key); 
             }
             catch (Exception e) { }
         }

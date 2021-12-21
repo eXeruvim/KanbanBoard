@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using FireSharp.Config;
 using FireSharp.Interfaces;
 using FireSharp.Response;
+using KanbanBoard.Server;
 using Newtonsoft.Json;
 
 namespace KanbanBoard.Forms
@@ -24,29 +25,15 @@ namespace KanbanBoard.Forms
             
         }
 
-       IFirebaseConfig config = new FirebaseConfig
-        {
-            AuthSecret = "EalE4Ra04uGQuLuA0zEhemNqzL2q0kAxzhJxHZrt",
-            BasePath = "https://kanbanboard-c892f-default-rtdb.europe-west1.firebasedatabase.app/"
-        };
-        IFirebaseClient client;
 
         private void OurBoards_Load(object sender, EventArgs e)
         {
-            try
-            {
-                client = new FireSharp.FirebaseClient(config);
-            }
-            catch
-            {
-                MessageBox.Show("Ошибка соединения");
-            }
         }
 
 
         private void comboBox1_DropDown(object sender, EventArgs e)
         {
-            FirebaseResponse res = client.Get(@"Projects/");
+            FirebaseResponse res = Firebase.сlient.Get(@"Projects/");
             Dictionary<string, UserBoards> data = JsonConvert.DeserializeObject<Dictionary<string, UserBoards>>(res.Body.ToString());
             UpdateRTB(data);
         }
@@ -72,7 +59,8 @@ namespace KanbanBoard.Forms
 
         private void button1_Click(object sender, EventArgs e)
         {
-            String choice = comboBox1.Text;
+            MainChildFormBoards.key = comboBox1.Text;
+            this.Close();
         }
 
     }
