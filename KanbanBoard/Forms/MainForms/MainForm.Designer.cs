@@ -70,9 +70,8 @@ namespace KanbanBoard.Forms
             this.menu_panel.Controls.Add(this.panel4);
             this.menu_panel.Dock = System.Windows.Forms.DockStyle.Left;
             this.menu_panel.Location = new System.Drawing.Point(0, 0);
-            this.menu_panel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.menu_panel.Name = "menu_panel";
-            this.menu_panel.Size = new System.Drawing.Size(157, 494);
+            this.menu_panel.Size = new System.Drawing.Size(179, 659);
             this.menu_panel.TabIndex = 0;
             // 
             // settings_iconButton
@@ -87,9 +86,10 @@ namespace KanbanBoard.Forms
             this.settings_iconButton.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.settings_iconButton.IconSize = 45;
             this.settings_iconButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.settings_iconButton.Location = new System.Drawing.Point(0, 269);
+            this.settings_iconButton.Location = new System.Drawing.Point(0, 359);
+            this.settings_iconButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.settings_iconButton.Name = "settings_iconButton";
-            this.settings_iconButton.Size = new System.Drawing.Size(157, 56);
+            this.settings_iconButton.Size = new System.Drawing.Size(179, 75);
             this.settings_iconButton.TabIndex = 14;
             this.settings_iconButton.Tag = "Настройки";
             this.settings_iconButton.Text = "Настройки";
@@ -109,24 +109,25 @@ namespace KanbanBoard.Forms
             this.chat_iconButton.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.chat_iconButton.IconSize = 45;
             this.chat_iconButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.chat_iconButton.Location = new System.Drawing.Point(0, 213);
+            this.chat_iconButton.Location = new System.Drawing.Point(0, 284);
+            this.chat_iconButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.chat_iconButton.Name = "chat_iconButton";
-            this.chat_iconButton.Size = new System.Drawing.Size(157, 56);
+            this.chat_iconButton.Size = new System.Drawing.Size(179, 75);
             this.chat_iconButton.TabIndex = 13;
             this.chat_iconButton.Tag = "Чат";
             this.chat_iconButton.Text = "Чат";
             this.chat_iconButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.chat_iconButton.UseVisualStyleBackColor = true;
+            this.chat_iconButton.Click += new System.EventHandler(this.chat_iconButton_Click_1);
             // 
             // submenu_boards
             // 
             this.submenu_boards.Controls.Add(this.iconButton4);
             this.submenu_boards.Controls.Add(this.iconButton3);
             this.submenu_boards.Dock = System.Windows.Forms.DockStyle.Top;
-            this.submenu_boards.Location = new System.Drawing.Point(0, 138);
-            this.submenu_boards.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.submenu_boards.Location = new System.Drawing.Point(0, 184);
             this.submenu_boards.Name = "submenu_boards";
-            this.submenu_boards.Size = new System.Drawing.Size(157, 75);
+            this.submenu_boards.Size = new System.Drawing.Size(179, 100);
             this.submenu_boards.TabIndex = 11;
             // 
             // iconButton4
@@ -141,10 +142,9 @@ namespace KanbanBoard.Forms
             this.iconButton4.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconButton4.IconSize = 33;
             this.iconButton4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton4.Location = new System.Drawing.Point(0, 37);
-            this.iconButton4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.iconButton4.Location = new System.Drawing.Point(0, 49);
             this.iconButton4.Name = "iconButton4";
-            this.iconButton4.Size = new System.Drawing.Size(157, 38);
+            this.iconButton4.Size = new System.Drawing.Size(179, 51);
             this.iconButton4.TabIndex = 10;
             this.iconButton4.Tag = "Присоединиться к доске";
             this.iconButton4.Text = "Присоединиться к доске";
@@ -166,9 +166,8 @@ namespace KanbanBoard.Forms
             this.iconButton3.IconSize = 33;
             this.iconButton3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.iconButton3.Location = new System.Drawing.Point(0, 0);
-            this.iconButton3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.iconButton3.Name = "iconButton3";
-            this.iconButton3.Size = new System.Drawing.Size(157, 38);
+            this.iconButton3.Size = new System.Drawing.Size(179, 51);
             this.iconButton3.TabIndex = 9;
             this.iconButton3.Tag = "Ваши доски";
             this.iconButton3.Text = "Ваши доски";
@@ -182,10 +181,9 @@ namespace KanbanBoard.Forms
             this.submenu_profile.Controls.Add(this.logout_btn);
             this.submenu_profile.Controls.Add(this.iconButton1);
             this.submenu_profile.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.submenu_profile.Location = new System.Drawing.Point(0, 359);
-            this.submenu_profile.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.submenu_profile.Location = new System.Drawing.Point(0, 479);
             this.submenu_profile.Name = "submenu_profile";
-            this.submenu_profile.Size = new System.Drawing.Size(157, 75);
+            this.submenu_profile.Size = new System.Drawing.Size(179, 100);
             this.submenu_profile.TabIndex = 10;
             // 
             // logout_btn
@@ -200,10 +198,9 @@ namespace KanbanBoard.Forms
             this.logout_btn.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.logout_btn.IconSize = 33;
             this.logout_btn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.logout_btn.Location = new System.Drawing.Point(0, 37);
-            this.logout_btn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.logout_btn.Location = new System.Drawing.Point(0, 49);
             this.logout_btn.Name = "logout_btn";
-            this.logout_btn.Size = new System.Drawing.Size(157, 38);
+            this.logout_btn.Size = new System.Drawing.Size(179, 51);
             this.logout_btn.TabIndex = 9;
             this.logout_btn.Tag = "Выйти из аккаунта";
             this.logout_btn.Text = "Выйти из аккаунта";
@@ -225,9 +222,8 @@ namespace KanbanBoard.Forms
             this.iconButton1.IconSize = 33;
             this.iconButton1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.iconButton1.Location = new System.Drawing.Point(0, 0);
-            this.iconButton1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.iconButton1.Name = "iconButton1";
-            this.iconButton1.Size = new System.Drawing.Size(157, 38);
+            this.iconButton1.Size = new System.Drawing.Size(179, 51);
             this.iconButton1.TabIndex = 8;
             this.iconButton1.Tag = "Настройки аккаунта";
             this.iconButton1.Text = "Настройки аккаунта";
@@ -248,9 +244,10 @@ namespace KanbanBoard.Forms
             this.profile_iconButton.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.profile_iconButton.IconSize = 35;
             this.profile_iconButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.profile_iconButton.Location = new System.Drawing.Point(0, 434);
+            this.profile_iconButton.Location = new System.Drawing.Point(0, 579);
+            this.profile_iconButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.profile_iconButton.Name = "profile_iconButton";
-            this.profile_iconButton.Size = new System.Drawing.Size(157, 60);
+            this.profile_iconButton.Size = new System.Drawing.Size(179, 80);
             this.profile_iconButton.TabIndex = 6;
             this.profile_iconButton.Tag = "Профиль";
             this.profile_iconButton.Text = "Профиль";
@@ -270,9 +267,10 @@ namespace KanbanBoard.Forms
             this.projects_iconButton.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.projects_iconButton.IconSize = 45;
             this.projects_iconButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.projects_iconButton.Location = new System.Drawing.Point(0, 82);
+            this.projects_iconButton.Location = new System.Drawing.Point(0, 109);
+            this.projects_iconButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.projects_iconButton.Name = "projects_iconButton";
-            this.projects_iconButton.Size = new System.Drawing.Size(157, 56);
+            this.projects_iconButton.Size = new System.Drawing.Size(179, 75);
             this.projects_iconButton.TabIndex = 4;
             this.projects_iconButton.Tag = "Доски";
             this.projects_iconButton.Text = "Доски";
@@ -285,8 +283,9 @@ namespace KanbanBoard.Forms
             this.panel4.Controls.Add(this.label1);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel4.Location = new System.Drawing.Point(0, 0);
+            this.panel4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(157, 82);
+            this.panel4.Size = new System.Drawing.Size(179, 109);
             this.panel4.TabIndex = 3;
             // 
             // label1
@@ -296,7 +295,7 @@ namespace KanbanBoard.Forms
             this.label1.ForeColor = System.Drawing.Color.Yellow;
             this.label1.Location = new System.Drawing.Point(0, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(157, 82);
+            this.label1.Size = new System.Drawing.Size(179, 109);
             this.label1.TabIndex = 0;
             this.label1.Text = "K4b4n";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -314,8 +313,9 @@ namespace KanbanBoard.Forms
             this.menu_iconBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.menu_iconBtn.IconSize = 40;
             this.menu_iconBtn.Location = new System.Drawing.Point(0, 0);
+            this.menu_iconBtn.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.menu_iconBtn.Name = "menu_iconBtn";
-            this.menu_iconBtn.Size = new System.Drawing.Size(74, 44);
+            this.menu_iconBtn.Size = new System.Drawing.Size(85, 59);
             this.menu_iconBtn.TabIndex = 1;
             this.menu_iconBtn.Tag = "";
             this.menu_iconBtn.UseVisualStyleBackColor = false;
@@ -329,10 +329,9 @@ namespace KanbanBoard.Forms
             this.upper_panel.Controls.Add(this.minimize_iconButton);
             this.upper_panel.Controls.Add(this.exit_iconButton);
             this.upper_panel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.upper_panel.Location = new System.Drawing.Point(157, 0);
-            this.upper_panel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.upper_panel.Location = new System.Drawing.Point(179, 0);
             this.upper_panel.Name = "upper_panel";
-            this.upper_panel.Size = new System.Drawing.Size(743, 44);
+            this.upper_panel.Size = new System.Drawing.Size(850, 59);
             this.upper_panel.TabIndex = 1;
             this.upper_panel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.upper_panel_MouseDown);
             // 
@@ -347,9 +346,10 @@ namespace KanbanBoard.Forms
             this.restore_iconButton.IconColor = System.Drawing.Color.White;
             this.restore_iconButton.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.restore_iconButton.IconSize = 20;
-            this.restore_iconButton.Location = new System.Drawing.Point(681, 0);
+            this.restore_iconButton.Location = new System.Drawing.Point(779, 0);
+            this.restore_iconButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.restore_iconButton.Name = "restore_iconButton";
-            this.restore_iconButton.Size = new System.Drawing.Size(31, 25);
+            this.restore_iconButton.Size = new System.Drawing.Size(35, 33);
             this.restore_iconButton.TabIndex = 4;
             this.restore_iconButton.UseVisualStyleBackColor = false;
             this.restore_iconButton.Click += new System.EventHandler(this.restore_iconButton_Click);
@@ -365,9 +365,10 @@ namespace KanbanBoard.Forms
             this.minimize_iconButton.IconColor = System.Drawing.Color.White;
             this.minimize_iconButton.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.minimize_iconButton.IconSize = 20;
-            this.minimize_iconButton.Location = new System.Drawing.Point(650, 0);
+            this.minimize_iconButton.Location = new System.Drawing.Point(744, 0);
+            this.minimize_iconButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.minimize_iconButton.Name = "minimize_iconButton";
-            this.minimize_iconButton.Size = new System.Drawing.Size(31, 25);
+            this.minimize_iconButton.Size = new System.Drawing.Size(35, 33);
             this.minimize_iconButton.TabIndex = 3;
             this.minimize_iconButton.UseVisualStyleBackColor = false;
             this.minimize_iconButton.Click += new System.EventHandler(this.minimize_iconButton_Click);
@@ -383,9 +384,10 @@ namespace KanbanBoard.Forms
             this.exit_iconButton.IconColor = System.Drawing.Color.White;
             this.exit_iconButton.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.exit_iconButton.IconSize = 20;
-            this.exit_iconButton.Location = new System.Drawing.Point(711, 0);
+            this.exit_iconButton.Location = new System.Drawing.Point(814, 0);
+            this.exit_iconButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.exit_iconButton.Name = "exit_iconButton";
-            this.exit_iconButton.Size = new System.Drawing.Size(31, 25);
+            this.exit_iconButton.Size = new System.Drawing.Size(35, 33);
             this.exit_iconButton.TabIndex = 2;
             this.exit_iconButton.UseVisualStyleBackColor = false;
             this.exit_iconButton.Click += new System.EventHandler(this.exit_iconButton_Click);
@@ -396,10 +398,9 @@ namespace KanbanBoard.Forms
             this.panel_childForm.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
             this.panel_childForm.Controls.Add(this.add_iconButton);
             this.panel_childForm.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel_childForm.Location = new System.Drawing.Point(157, 44);
-            this.panel_childForm.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel_childForm.Location = new System.Drawing.Point(179, 59);
             this.panel_childForm.Name = "panel_childForm";
-            this.panel_childForm.Size = new System.Drawing.Size(743, 450);
+            this.panel_childForm.Size = new System.Drawing.Size(850, 600);
             this.panel_childForm.TabIndex = 2;
             // 
             // add_iconButton
@@ -414,10 +415,11 @@ namespace KanbanBoard.Forms
             this.add_iconButton.IconColor = System.Drawing.Color.Yellow;
             this.add_iconButton.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.add_iconButton.IconSize = 40;
-            this.add_iconButton.Location = new System.Drawing.Point(713, 0);
+            this.add_iconButton.Location = new System.Drawing.Point(816, 0);
+            this.add_iconButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.add_iconButton.Name = "add_iconButton";
             this.add_iconButton.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.add_iconButton.Size = new System.Drawing.Size(30, 450);
+            this.add_iconButton.Size = new System.Drawing.Size(34, 600);
             this.add_iconButton.TabIndex = 10;
             this.add_iconButton.Tag = "";
             this.add_iconButton.UseVisualStyleBackColor = false;
@@ -425,15 +427,14 @@ namespace KanbanBoard.Forms
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
-            this.ClientSize = new System.Drawing.Size(900, 494);
+            this.ClientSize = new System.Drawing.Size(1029, 659);
             this.Controls.Add(this.panel_childForm);
             this.Controls.Add(this.upper_panel);
             this.Controls.Add(this.menu_panel);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MainForm";
