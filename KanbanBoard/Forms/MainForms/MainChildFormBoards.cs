@@ -10,13 +10,16 @@ namespace KanbanBoard.Forms
 {
     public partial class MainChildFormBoards : Form
     {
+
+        public static string key { get; set; }
+
         public MainChildFormBoards()
         {
             InitializeComponent();
             SetDoubleBuffered(Board);
             Program.mainChildFormBoards = this;
 
-            label1.Text = OurBoards.choice;
+
 
             Board.ColumnStyles.Clear();
             Board.RowStyles.Clear();

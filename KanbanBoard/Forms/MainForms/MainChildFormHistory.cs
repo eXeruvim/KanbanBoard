@@ -19,16 +19,7 @@ namespace KanbanBoard.Forms
 
         private void getProject(string login)
         {
-            try
-            {
-                FirebaseResponse res = Firebase.сlient.Get($"Users/{login}/userProject/");
-                Data result = res.ResultAs<Data>();
-                linkLabel1.Text = result.project;
-            }
-            catch(Exception e)
-            {
-                MessageBox.Show("Error: " + e.StackTrace);
-            }
+            
         }
 
         private void create_button_Click(object sender, EventArgs e)

@@ -7,11 +7,20 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using KanbanBoard.Utils;
+using FireSharp.Config;
+using FireSharp.Interfaces;
+using FireSharp.Response;
+using Newtonsoft.Json;
+using System.Collections.Generic;
+
 namespace KanbanBoard.Forms
 {
     public partial class MainForm : Form
     {
         private int borderSize = 2;
+
+
+
         public MainForm()
         {
             InitializeComponent();
@@ -28,6 +37,7 @@ namespace KanbanBoard.Forms
         private extern static void ReleaseCapture();
         [DllImport("user32.DLL", EntryPoint = "SendMessage")]
         private extern static void SendMessage(IntPtr hWnd, int wMsg, int wParam, int lParam);
+
 
         private void upper_panel_MouseDown(object sender, MouseEventArgs e)
         {
@@ -237,6 +247,7 @@ namespace KanbanBoard.Forms
         {
             add_iconButton.Visible = false;
             OpenChildForm(new OurBoards());
+
         }
 
         private void iconButton4_Click(object sender, EventArgs e)
@@ -252,5 +263,36 @@ namespace KanbanBoard.Forms
             OpenChildForm(new MainChildFormBoards());
         }
 
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void projects_list_DropDown(object sender, EventArgs e)
+        {
+            FirebaseResponse res = Firebase.client.Get(@"Projects/");
+            Dictionary<string, UserBoards> data = JsonConvert.DeserializeObject<Dictionary<string, UserBoards>>(res.Body.ToString());
+            UpdateRTB(data);
+        }
+
+        void UpdateRTB(Dictionary<string, UserBoards> record)
+        {
+            projects_list.Items.Clear();
+
+            foreach (var item in record)
+            {
+                projects_list.Items.Add(item.Value.projectKey);
+            }
+        }
+
+        private void projects_list_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            MainChildFormBoards.key = projects_list.Text;
+        }
+
+        private void open_project_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new MainChildFormBoards());
+        }
     }
 }
