@@ -22,7 +22,7 @@ namespace KanbanBoard.Server
         {
             foreach (var project in dataDictionary)
             {
-                сlient.Set($"Projects/{project.Key}/BoardInfo", project.Value);
+                сlient.Set($"Projects/{project.Key}/", project.Value);
             }
         }
     }

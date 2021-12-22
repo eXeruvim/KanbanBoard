@@ -5,12 +5,24 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
+using System;
+using FireSharp.Config;
+using FireSharp.Interfaces;
+using FireSharp.Response;
+using System.Runtime.InteropServices;
+using KanbanBoard.Utils;
+using FireSharp.Config;
+using FireSharp.Interfaces;
+using FireSharp.Response;
+using Newtonsoft.Json;
 
 namespace KanbanBoard.Forms
 {
     public partial class MainChildFormBoards : Form
     {
         public static string key { get; set; }
+        private int Counter, TickCount;
+
 
         public MainChildFormBoards()
         {
@@ -24,7 +36,7 @@ namespace KanbanBoard.Forms
             typeof(TableLayoutPanel).GetProperty("DoubleBuffered", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance).SetValue(Board, true, null);
             Board.Resize += (s, a) => ResizeTable();
         }
-    
+
         public void AddPanel()
         {
             var column = 0;
@@ -40,7 +52,7 @@ namespace KanbanBoard.Forms
             if (Board.ColumnStyles.Count > 1 && column == 0)
                 column = Board.ColumnStyles.Count;
             AddTitleToPanel("Название", column);
-            AddControlToPanel("Название", "Описание","Участники", column, 1);
+            AddControlToPanel("Название", "Описание", "Участники", column, 1);
         }
 
         private void AddTitleToPanel(string textOfLabel, int column)
@@ -113,7 +125,7 @@ namespace KanbanBoard.Forms
                 if (!Application.OpenForms.OfType<ChangePanelNameForm>().Any())
                     new ChangePanelNameForm(this, titlePanel).Show();
             };
-            SaveIn(key); // для теста
+            //SaveIn(key); // для теста
         }
 
 
@@ -203,7 +215,7 @@ namespace KanbanBoard.Forms
                 {
                     if (Board.GetCellPosition(x).Row != 0) x.Height = Board.Height / Board.RowCount;
                 });
-                SaveIn(key); 
+                SaveIn(key);
             }
             catch (Exception e) { }
         }
@@ -216,7 +228,7 @@ namespace KanbanBoard.Forms
         // События на кнопки
         private void SetEvents(Ticket ticketPanel)
         {
-            
+
             // Вызов редактирования 
             ticketPanel.MouseDown += (sender, args) =>
             {
@@ -231,8 +243,8 @@ namespace KanbanBoard.Forms
 
         private void Board_DragEnter(object sender, DragEventArgs e)
         {
-           if (e.Data.GetDataPresent(typeof(Ticket)))
-               e.Effect = DragDropEffects.All;
+            if (e.Data.GetDataPresent(typeof(Ticket)))
+                e.Effect = DragDropEffects.All;
         }
 
         Point ptOriginal = Point.Empty;
@@ -252,7 +264,7 @@ namespace KanbanBoard.Forms
             int rowInd = -1;
             int x = 0;
             int y = 0;
-            while(columnInd <= this.Board.ColumnStyles.Count)
+            while (columnInd <= this.Board.ColumnStyles.Count)
             {
                 if (loc.X < x)
                 {
@@ -261,7 +273,7 @@ namespace KanbanBoard.Forms
                 columnInd++;
                 x += this.Board.GetColumnWidths()[columnInd];
             }
-            while(rowInd <= this.Board.RowStyles.Count)
+            while (rowInd <= this.Board.RowStyles.Count)
             {
                 if (loc.Y < y)
                 {

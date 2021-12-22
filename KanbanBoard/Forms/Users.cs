@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace KanbanBoard.Forms
 {
-    class UserBoards
+    class Users
     {
-        public string projectKey { get; set; }
-        public string projectName { get; set; }
+        public string login { get; set; }
+        public string name { get; set; }
+        public string userColor { get; set; }
     }
 }
