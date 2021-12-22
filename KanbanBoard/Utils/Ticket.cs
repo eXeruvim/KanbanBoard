@@ -9,10 +9,9 @@ namespace KanbanBoard.Utils
     public sealed class Ticket : Panel
     {
         public Label Title { get; set; }
-        public Label People { get; set; }
-        public CheckBox Task { get; set; }
+        public Label Member { get; set; }
+        public Label Description { get; set; }
         public Button DelButton { get; set; }
-        public Button AddButton { get; set; }
 
         public Ticket()
         {
@@ -27,19 +26,30 @@ namespace KanbanBoard.Utils
             {
                 Name = "Title",
                 Text = "Название",
-                Font = new Font("Tahoma", 12f, FontStyle.Bold),
+                Font = new Font("Lucida Sans Unicode", 12f, FontStyle.Bold),
                 Location = new Point(Size.Width - Size.Width + 5, Size.Height - Size.Height + 5),
                 Margin = new Padding(20, 20, 40, 20),
             };
-            People = new Label()
+
+            Description = new Label()
             {
-                Name = "People",
+                Name = "Description",
+                Text = "Описание",
+                Font = new Font("Lucida Sans Unicode", 12f, FontStyle.Bold),
+                Margin = new Padding(5),
+                Location = new Point(Size.Width - Size.Width + 5, Size.Height / 2),
+            };
+
+            Member = new Label()
+            {
+                Name = "Member",
                 Text = "Разработчики",
                 Margin = new Padding(5),
                 Location = new Point(Size.Width - Size.Width + 5, Size.Height - 5),
             };
 
-            new List<Label> { Title, People }.ForEach(x =>
+
+            new List<Label> { Title, Description, Member }.ForEach(x =>
             {
                 x.ForeColor = Color.Black;
                 x.AutoSize = true;
@@ -48,16 +58,8 @@ namespace KanbanBoard.Utils
             DelButton = new Button()
             {
                 Name = "delButton",
-                Text = "✖",
+                Text = "Х",
                 Font = new Font("Tahoma", 7.5f),
-            };
-
-            AddButton = new Button()
-            {
-                Name = "addButton",
-                Text = "Добавить задачу",
-                Font = new Font("Tahoma", 7.5f),
-                Dock = DockStyle.Bottom,
             };
 
             new List<Button>() { DelButton}.ForEach(x =>
@@ -74,22 +76,8 @@ namespace KanbanBoard.Utils
                  x.MouseLeave += (s, a) => x.ForeColor = Color.Black;
              });
 
-            new List<Button>() { AddButton }.ForEach(x =>
-            {
-                x.AutoSize = true;
-                x.Size = new Size(15, 15);
-                x.FlatStyle = FlatStyle.Flat;
-                x.FlatAppearance.BorderSize = 1;
-                x.ForeColor = Color.Yellow;
-                x.BackColor = Color.Black;
-                x.MouseEnter += (s, a) => x.ForeColor = Color.Red;
-                x.MouseLeave += (s, a) => x.ForeColor = Color.Yellow;
-            });
-
-
-
-            Controls.AddRange(new Control[] { DelButton, AddButton });
-            Controls.AddRange(new Control[] { Title, People });
+            Controls.AddRange(new Control[] { DelButton });
+            Controls.AddRange(new Control[] { Title, Description, Member });
         }
 
         protected override void OnPaint(PaintEventArgs e)
@@ -100,12 +88,13 @@ namespace KanbanBoard.Utils
             {
                 // Расположение текста
                 Title.Location = new Point(Size.Width - Size.Width + 5, Size.Height - Size.Height + 15);
-                People.Location = new Point(Size.Width - Size.Width + 5, Size.Height - 50);
+                Description.Location = new Point(Size.Width - Size.Width + 5, Title.Location.Y + 50);
+                Member.Location = new Point(Size.Width - Size.Width + 5, Size.Height - 50);
 
                 // Расположение кнопки
                 DelButton.Location = new Point(Size.Width - DelButton.Size.Width, 0);
                 
-                new List<Control> { Title, People }.ForEach(x => x.MaximumSize = new Size(Size.Width - 5, Size.Height));
+                new List<Control> { Title, Description, Member }.ForEach(x => x.MaximumSize = new Size(Size.Width - 5, Size.Height));
             }));
         }
         public static Color GetColor() => Color.Yellow;

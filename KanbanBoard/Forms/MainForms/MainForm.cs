@@ -1,15 +1,9 @@
 ﻿using System;
-using FireSharp.Config;
-using FireSharp.Interfaces;
 using FireSharp.Response;
 using System.Drawing;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
-using KanbanBoard.Utils;
-using FireSharp.Config;
-using FireSharp.Interfaces;
-using FireSharp.Response;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 
@@ -230,7 +224,7 @@ namespace KanbanBoard.Forms
 
         private void iconButton1_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new MainChildFormProfile());
+            //OpenChildForm(new MainChildFormProfile());
         }
 
         private void logout_btn_Click(object sender, EventArgs e)
@@ -243,8 +237,6 @@ namespace KanbanBoard.Forms
         private void iconButton3_Click(object sender, EventArgs e)
         {
             add_iconButton.Visible = false;
-            OpenChildForm(new OurBoards());
-
         }
 
         private void iconButton4_Click(object sender, EventArgs e)

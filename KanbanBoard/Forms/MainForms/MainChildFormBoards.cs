@@ -17,13 +17,10 @@ namespace KanbanBoard.Forms
             InitializeComponent();
             SetDoubleBuffered(Board);
             Program.mainChildFormBoards = this;
-            //MessageBox.Show(key);
-
             Board.ColumnStyles.Clear();
             Board.RowStyles.Clear();
             Board.ColumnCount = 1;
             Board.RowCount = 1;
-            //  this.DoubleBuffered = true;
             typeof(TableLayoutPanel).GetProperty("DoubleBuffered", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance).SetValue(Board, true, null);
             Board.Resize += (s, a) => ResizeTable();
         }
@@ -43,7 +40,7 @@ namespace KanbanBoard.Forms
             if (Board.ColumnStyles.Count > 1 && column == 0)
                 column = Board.ColumnStyles.Count;
             AddTitleToPanel("Название", column);
-            AddControlToPanel("Название", "", column, 1);
+            AddControlToPanel("Название", "Описание","Участники", column, 1);
         }
 
         private void AddTitleToPanel(string textOfLabel, int column)
@@ -73,7 +70,7 @@ namespace KanbanBoard.Forms
                 for (var row = 1; row <= Board.RowStyles.Count; row++)
                 {
                     if (!(Board.GetControlFromPosition(column, row) is null)) continue;
-                    AddControlToPanel("Название", "", column, row);
+                    AddControlToPanel("Название", "Описание", "Участники", column, row);
                     break;
                 }
             };
@@ -143,11 +140,12 @@ namespace KanbanBoard.Forms
             ResizeTable();
         }
 
-        private void AddControlToPanel(string title,  string people, int column, int row)
+        private void AddControlToPanel(string title, string description, string member, int column, int row)
         {
             var control = new Ticket();
             control.Title.Text = title;
-            control.People.Text = people;
+            control.Description.Text = description;
+            control.Member.Text = member;
             SetEvents(control);
 
             control.Name = $"ticket{column}{row}";
@@ -228,28 +226,6 @@ namespace KanbanBoard.Forms
             // Удаление столбца
             ticketPanel.DelButton.Click += (sender, args) => Board.Controls.Remove(ticketPanel);
 
-            ticketPanel.AddButton.Click += (sender, args) =>
-            {
-                var contr = ticketPanel.Controls.OfType<CheckBox>().Count();
-                if (contr != 8)
-                {
-                    CheckBox Task = new CheckBox()
-                    {
-                        Name = "Task",
-                        Text = "Задача",
-                        Font = new Font("Lucida Sans Unicode", 10f),
-                        Margin = new Padding(20, 20, 40, 20),
-                        Location = new Point(Size.Width - Size.Width + 10, Size.Height / 2),
-                        Top = 40 + contr * 25,
-                    };
-                    ticketPanel.Controls.Add(Task);
-                }
-                else
-                {
-                    MessageBox.Show("Достигнут лимит задач в одном тикете!");
-                }
-            };
-
             ticketPanel.MouseDown += Panel_MouseDown;
         }
 
@@ -314,7 +290,8 @@ namespace KanbanBoard.Forms
                         ticket.Add(new Dictionary<string, string>()
                         {
                             {"Title", ((Ticket)Board.GetControlFromPosition(column, row)).Title.Text},
-                            {"People", ((Ticket)Board.GetControlFromPosition(column, row)).People.Text}
+                            {"Description", ((Ticket)Board.GetControlFromPosition(column, row)).Description.Text },
+                            {"Member", ((Ticket)Board.GetControlFromPosition(column, row)).Member.Text}
                         });
                 }
 

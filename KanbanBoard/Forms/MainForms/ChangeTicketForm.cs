@@ -29,14 +29,16 @@ namespace KanbanBoard.Forms
         private void TicketsChangeForm_Load(object sender, EventArgs e)
         {
             ChangingTitleTextBox.Text = _ticket.Title.Text;
-            ChangingPeopleTextBox.Text = _ticket.People.Text;
+            ChangeTicketForm_richTextBox.Text = _ticket.Description.Text;
+            ChangingMemberTextBox.Text = _ticket.Member.Text;
         }
 
         // Сохранить при закрытии
         private void TicketsChangeForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             _ticket.Title.Text = ChangingTitleTextBox.Text;
-            _ticket.People.Text = ChangingPeopleTextBox.Text;
+            _ticket.Description.Text = ChangeTicketForm_richTextBox.Text;
+            _ticket.Member.Text = ChangingMemberTextBox.Text;
         }
     }
 }
