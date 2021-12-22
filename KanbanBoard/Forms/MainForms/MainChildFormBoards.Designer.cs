@@ -31,8 +31,6 @@ namespace KanbanBoard.Forms
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainChildFormBoards));
             this.Board = new System.Windows.Forms.TableLayoutPanel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.Board.SuspendLayout();
             this.SuspendLayout();
             // 
             // Board
@@ -42,7 +40,6 @@ namespace KanbanBoard.Forms
             this.Board.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
             this.Board.ColumnCount = 1;
             this.Board.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.Board.Controls.Add(this.label1, 0, 0);
             this.Board.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Board.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.AddColumns;
             this.Board.Location = new System.Drawing.Point(0, 0);
@@ -56,15 +53,6 @@ namespace KanbanBoard.Forms
             this.Board.DragEnter += new System.Windows.Forms.DragEventHandler(this.Board_DragEnter);
             this.Board.DragOver += new System.Windows.Forms.DragEventHandler(this.Board_DragOver);
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(4, 1);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(50, 20);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "label1";
-            // 
             // MainChildFormBoards
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -77,8 +65,6 @@ namespace KanbanBoard.Forms
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainChildFormBoards";
             this.Text = "MainChildForm1";
-            this.Board.ResumeLayout(false);
-            this.Board.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -86,6 +72,5 @@ namespace KanbanBoard.Forms
         #endregion
 
         private System.Windows.Forms.TableLayoutPanel Board;
-        private System.Windows.Forms.Label label1;
     }
 }

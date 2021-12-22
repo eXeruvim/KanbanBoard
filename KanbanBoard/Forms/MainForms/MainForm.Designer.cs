@@ -45,6 +45,9 @@ namespace KanbanBoard.Forms
             this.label1 = new System.Windows.Forms.Label();
             this.menu_iconBtn = new FontAwesome.Sharp.IconButton();
             this.upper_panel = new System.Windows.Forms.Panel();
+            this.create_project = new System.Windows.Forms.Button();
+            this.open_project = new System.Windows.Forms.Button();
+            this.projects_list = new System.Windows.Forms.ComboBox();
             this.restore_iconButton = new FontAwesome.Sharp.IconButton();
             this.minimize_iconButton = new FontAwesome.Sharp.IconButton();
             this.exit_iconButton = new FontAwesome.Sharp.IconButton();
@@ -324,6 +327,9 @@ namespace KanbanBoard.Forms
             // upper_panel
             // 
             this.upper_panel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
+            this.upper_panel.Controls.Add(this.create_project);
+            this.upper_panel.Controls.Add(this.open_project);
+            this.upper_panel.Controls.Add(this.projects_list);
             this.upper_panel.Controls.Add(this.menu_iconBtn);
             this.upper_panel.Controls.Add(this.restore_iconButton);
             this.upper_panel.Controls.Add(this.minimize_iconButton);
@@ -334,6 +340,35 @@ namespace KanbanBoard.Forms
             this.upper_panel.Size = new System.Drawing.Size(850, 59);
             this.upper_panel.TabIndex = 1;
             this.upper_panel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.upper_panel_MouseDown);
+            // 
+            // create_project
+            // 
+            this.create_project.Location = new System.Drawing.Point(577, 15);
+            this.create_project.Name = "create_project";
+            this.create_project.Size = new System.Drawing.Size(94, 29);
+            this.create_project.TabIndex = 7;
+            this.create_project.Text = "Создать";
+            this.create_project.UseVisualStyleBackColor = true;
+            // 
+            // open_project
+            // 
+            this.open_project.Location = new System.Drawing.Point(477, 15);
+            this.open_project.Name = "open_project";
+            this.open_project.Size = new System.Drawing.Size(94, 29);
+            this.open_project.TabIndex = 6;
+            this.open_project.Text = "Открыть";
+            this.open_project.UseVisualStyleBackColor = true;
+            this.open_project.Click += new System.EventHandler(this.open_project_Click);
+            // 
+            // projects_list
+            // 
+            this.projects_list.FormattingEnabled = true;
+            this.projects_list.Location = new System.Drawing.Point(192, 15);
+            this.projects_list.Name = "projects_list";
+            this.projects_list.Size = new System.Drawing.Size(279, 28);
+            this.projects_list.TabIndex = 5;
+            this.projects_list.DropDown += new System.EventHandler(this.projects_list_DropDown);
+            this.projects_list.SelectedIndexChanged += new System.EventHandler(this.projects_list_SelectedIndexChanged);
             // 
             // restore_iconButton
             // 
@@ -439,6 +474,7 @@ namespace KanbanBoard.Forms
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MainForm";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainForm_FormClosed);
+            this.Load += new System.EventHandler(this.MainForm_Load);
             this.Resize += new System.EventHandler(this.MainForm_Resize);
             this.menu_panel.ResumeLayout(false);
             this.submenu_boards.ResumeLayout(false);
@@ -472,5 +508,8 @@ namespace KanbanBoard.Forms
         private System.Windows.Forms.Panel submenu_boards;
         private FontAwesome.Sharp.IconButton iconButton4;
         private FontAwesome.Sharp.IconButton iconButton3;
+        private System.Windows.Forms.Button create_project;
+        private System.Windows.Forms.Button open_project;
+        private System.Windows.Forms.ComboBox projects_list;
     }
 }
