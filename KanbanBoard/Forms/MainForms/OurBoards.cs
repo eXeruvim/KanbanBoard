@@ -29,9 +29,6 @@ namespace KanbanBoard.Forms
 
         private void comboBox1_DropDown(object sender, EventArgs e)
         {
-            FirebaseResponse res = Firebase.сlient.Get(@"Projects/");
-            Dictionary<string, UserBoards> data = JsonConvert.DeserializeObject<Dictionary<string, UserBoards>>(res.Body.ToString());
-            UpdateRTB(data);
         }
 
         async void LiveCall()

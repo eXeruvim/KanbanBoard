@@ -5,12 +5,24 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
+using System;
+using FireSharp.Config;
+using FireSharp.Interfaces;
+using FireSharp.Response;
+using System.Runtime.InteropServices;
+using KanbanBoard.Utils;
+using FireSharp.Config;
+using FireSharp.Interfaces;
+using FireSharp.Response;
+using Newtonsoft.Json;
 
 namespace KanbanBoard.Forms
 {
     public partial class MainChildFormBoards : Form
     {
         public static string key { get; set; }
+        private int Counter, TickCount;
+
 
         public MainChildFormBoards()
         {
@@ -27,7 +39,7 @@ namespace KanbanBoard.Forms
             typeof(TableLayoutPanel).GetProperty("DoubleBuffered", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance).SetValue(Board, true, null);
             Board.Resize += (s, a) => ResizeTable();
         }
-    
+
         public void AddPanel()
         {
             var column = 0;
@@ -116,7 +128,7 @@ namespace KanbanBoard.Forms
                 if (!Application.OpenForms.OfType<ChangePanelNameForm>().Any())
                     new ChangePanelNameForm(this, titlePanel).Show();
             };
-            SaveIn(key); // для теста
+            //SaveIn(key); // для теста
         }
 
 
@@ -143,7 +155,7 @@ namespace KanbanBoard.Forms
             ResizeTable();
         }
 
-        private void AddControlToPanel(string title,  string people, int column, int row)
+        private void AddControlToPanel(string title, string people, int column, int row)
         {
             var control = new Ticket();
             control.Title.Text = title;
@@ -205,7 +217,7 @@ namespace KanbanBoard.Forms
                 {
                     if (Board.GetCellPosition(x).Row != 0) x.Height = Board.Height / Board.RowCount;
                 });
-                SaveIn(key); 
+               SaveIn(key);
             }
             catch (Exception e) { }
         }
@@ -218,7 +230,7 @@ namespace KanbanBoard.Forms
         // События на кнопки
         private void SetEvents(Ticket ticketPanel)
         {
-            
+
             // Вызов редактирования 
             ticketPanel.MouseDown += (sender, args) =>
             {
@@ -255,8 +267,8 @@ namespace KanbanBoard.Forms
 
         private void Board_DragEnter(object sender, DragEventArgs e)
         {
-           if (e.Data.GetDataPresent(typeof(Ticket)))
-               e.Effect = DragDropEffects.All;
+            if (e.Data.GetDataPresent(typeof(Ticket)))
+                e.Effect = DragDropEffects.All;
         }
 
         Point ptOriginal = Point.Empty;
@@ -276,7 +288,7 @@ namespace KanbanBoard.Forms
             int rowInd = -1;
             int x = 0;
             int y = 0;
-            while(columnInd <= this.Board.ColumnStyles.Count)
+            while (columnInd <= this.Board.ColumnStyles.Count)
             {
                 if (loc.X < x)
                 {
@@ -285,7 +297,7 @@ namespace KanbanBoard.Forms
                 columnInd++;
                 x += this.Board.GetColumnWidths()[columnInd];
             }
-            while(rowInd <= this.Board.RowStyles.Count)
+            while (rowInd <= this.Board.RowStyles.Count)
             {
                 if (loc.Y < y)
                 {
@@ -324,6 +336,69 @@ namespace KanbanBoard.Forms
             allData.Add(projectName, columnDate);
             // Сохранение в Firebase
             Firebase.Save(allData);
+        }
+
+        public void StartDynamicCreate()
+        {
+            Board.ColumnStyles.Clear();
+            Board.RowStyles.Clear();
+            Board.ColumnCount = 1;
+            Board.RowCount = 1;
+            FirebaseResponse result = Firebase.client.Get(@"Projects/" + key + "/Columns");
+            Dictionary<string, ProjectInfo> data = JsonConvert.DeserializeObject<Dictionary<string, ProjectInfo>>(result.Body.ToString());
+            CountColumns(data);
+
+            FirebaseResponse res = Firebase.client.Get(@"Counters/ColumnsCounter");
+
+            var set1 = Firebase.client.Set(@"Counters/ColumnsCounter", Counter);
+
+
+            FirebaseResponse result1 = Firebase.client.Get(@"Projects/" + key + "/Columns/Tickets");
+            Dictionary<string, TicketInfo> data1 = JsonConvert.DeserializeObject<Dictionary<string, TicketInfo>>(result.Body.ToString());
+            TicketsCount(data1);
+
+            FirebaseResponse res1 = Firebase.client.Get(@"Counters/TicketsCounter");
+            var set2 = Firebase.client.Set(@"Counters/TicketsCounter", TickCount);
+
+            for (int i = 1; i <= Counter; i++)
+            {
+                addColumns(data, i);
+            }
+
+
+
+
+
+        }
+
+        void CountColumns(Dictionary<string, ProjectInfo> record)
+        {
+            foreach (var item in record)
+            {
+                Counter++;
+            }
+        }
+
+        void TicketsCount(Dictionary<string, TicketInfo> record)
+        {
+            foreach (var item in record)
+            {
+                TickCount++;
+            }
+        }
+
+        void addColumns(Dictionary<string, ProjectInfo> record, int column)
+        {
+    
+            
+        }
+
+        void addTickets(Dictionary<string, TicketInfo> record, int column)
+        {
+            foreach (var item in record)
+            {
+                AddControlToPanel(item.Value.TicketTitle, "", column, 1);
+            }
         }
     }
 }

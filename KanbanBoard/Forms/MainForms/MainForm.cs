@@ -289,7 +289,18 @@ namespace KanbanBoard.Forms
 
         private void open_project_Click(object sender, EventArgs e)
         {
+            MainChildFormBoards.key = projects_list.Text;
+            Program.mainChildFormBoards.StartDynamicCreate();
             OpenChildForm(new MainChildFormBoards());
+        }
+
+        private void create_project_Click(object sender, EventArgs e)
+        {
+            if (projects_list.Text == "")
+            {
+                CreationForm CF = new CreationForm();
+                CF.ShowDialog();
+            }
         }
     }
 }

@@ -343,27 +343,36 @@ namespace KanbanBoard.Forms
             // 
             // create_project
             // 
-            this.create_project.Location = new System.Drawing.Point(577, 15);
+            this.create_project.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(21)))), ((int)(((byte)(32)))));
+            this.create_project.Font = new System.Drawing.Font("Lucida Sans Unicode", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.create_project.ForeColor = System.Drawing.Color.Yellow;
+            this.create_project.Location = new System.Drawing.Point(593, 15);
             this.create_project.Name = "create_project";
-            this.create_project.Size = new System.Drawing.Size(94, 29);
+            this.create_project.Size = new System.Drawing.Size(109, 29);
             this.create_project.TabIndex = 7;
             this.create_project.Text = "Создать";
-            this.create_project.UseVisualStyleBackColor = true;
+            this.create_project.UseVisualStyleBackColor = false;
+            this.create_project.Click += new System.EventHandler(this.create_project_Click);
             // 
             // open_project
             // 
+            this.open_project.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(21)))), ((int)(((byte)(32)))));
+            this.open_project.Font = new System.Drawing.Font("Lucida Sans Unicode", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.open_project.ForeColor = System.Drawing.Color.Yellow;
             this.open_project.Location = new System.Drawing.Point(477, 15);
             this.open_project.Name = "open_project";
-            this.open_project.Size = new System.Drawing.Size(94, 29);
+            this.open_project.Size = new System.Drawing.Size(110, 29);
             this.open_project.TabIndex = 6;
             this.open_project.Text = "Открыть";
-            this.open_project.UseVisualStyleBackColor = true;
+            this.open_project.UseVisualStyleBackColor = false;
             this.open_project.Click += new System.EventHandler(this.open_project_Click);
             // 
             // projects_list
             // 
+            this.projects_list.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
+            this.projects_list.ForeColor = System.Drawing.Color.Yellow;
             this.projects_list.FormattingEnabled = true;
-            this.projects_list.Location = new System.Drawing.Point(192, 15);
+            this.projects_list.Location = new System.Drawing.Point(181, 15);
             this.projects_list.Name = "projects_list";
             this.projects_list.Size = new System.Drawing.Size(279, 28);
             this.projects_list.TabIndex = 5;
