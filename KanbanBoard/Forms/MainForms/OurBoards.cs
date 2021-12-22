@@ -26,10 +26,6 @@ namespace KanbanBoard.Forms
         }
 
 
-        private void OurBoards_Load(object sender, EventArgs e)
-        {
-        }
-
 
         private void comboBox1_DropDown(object sender, EventArgs e)
         {

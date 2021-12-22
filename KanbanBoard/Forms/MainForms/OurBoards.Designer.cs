@@ -36,17 +36,19 @@ namespace KanbanBoard.Forms
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(140, 67);
+            this.comboBox1.Location = new System.Drawing.Point(122, 50);
+            this.comboBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(554, 28);
+            this.comboBox1.Size = new System.Drawing.Size(485, 23);
             this.comboBox1.TabIndex = 0;
             this.comboBox1.DropDown += new System.EventHandler(this.comboBox1_DropDown);
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(291, 182);
+            this.button1.Location = new System.Drawing.Point(255, 136);
+            this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(240, 29);
+            this.button1.Size = new System.Drawing.Size(210, 22);
             this.button1.TabIndex = 1;
             this.button1.Text = "Перейти к доске";
             this.button1.UseVisualStyleBackColor = true;
@@ -54,15 +56,15 @@ namespace KanbanBoard.Forms
             // 
             // OurBoards
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(700, 338);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.comboBox1);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "OurBoards";
             this.Text = "OurBoards";
-            this.Load += new System.EventHandler(this.OurBoards_Load);
             this.ResumeLayout(false);
 
         }
